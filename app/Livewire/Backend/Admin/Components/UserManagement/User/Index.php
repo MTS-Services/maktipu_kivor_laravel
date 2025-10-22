@@ -88,7 +88,7 @@ class Index extends Component
             [
                 'key' => 'id',
                 'label' => 'Profile',
-                'route' => 'admin.um.user.profileInfo'
+                'route' => 'admin.um.user.view'
             ],
             [
                 'key' => 'id',

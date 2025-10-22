@@ -28,11 +28,6 @@ Route::middleware(['auth:admin', 'admin', 'adminVerify'])->name('admin.')->prefi
             Route::get('/edit/{id}', 'edit')->name('edit');
             Route::get('/view/{id}', 'view')->name('view');
             Route::get('/trash', 'trash')->name('trash');
-            Route::get('/profile-info/{id}', 'profileInfo')->name('profileInfo');
-            Route::get('/shop-info/{id}', 'shopInfo')->name('shopInfo');
-            Route::get('/kyc-info/{id}', 'kycInfo')->name('kycInfo');
-            Route::get('/statistic/{id}', 'statistic')->name('statistic');
-            Route::get('/referral/{id}', 'referral')->name('referral');
         });
     });
 });
