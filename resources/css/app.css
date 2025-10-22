@@ -231,7 +231,7 @@
     }
 
     .animated-bg {
-        @apply bg-[length: 400%_400%] animate-gradientBG bg-gradient-to-br from-bg-tertiary via-bg-primary to-bg-tertiary;
+        @apply bg-[length:400%_400%] animate-gradientBG bg-gradient-to-br from-bg-tertiary via-bg-primary to-bg-tertiary;
     }
 
 }
