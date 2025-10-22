@@ -31,62 +31,77 @@
             <!-- Add other form fields here -->
             <div class="mt-6 space-y-4 grid grid-cols-2 gap-5">
                 <div>
-                    <label class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
+                    {{-- <label class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
                         First Name <span class="text-red-500">*</span>
                     </label>
                     <input type="text" wire:model="form.first_name"
                         class="w-full px-4 py-2 border rounded-lg dark:bg-gray-800 dark:border-gray-600">
                     @error('form.first_name')
                         <p class="mt-1 text-sm text-red-600">{{ $message }}</p>
-                    @enderror
+                    @enderror --}}
+                    <x-ui.label for="first_name" :value="__('First Name')" required />
+                    <x-ui.input id="first_name" type="text" class="mt-1 block w-full" wire:model="form.first_name" />
+                    <x-ui.input-error :messages="$errors->get('form.first_name')" class="mt-2" />
                 </div>
 
                 <div>
-                    <label class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
+                    {{-- <label class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
                         Last Name
                     </label>
                     <input type="text" wire:model="form.last_name"
                         class="w-full px-4 py-2 border rounded-lg dark:bg-gray-800 dark:border-gray-600">
                     @error('form.last_name')
                         <p class="mt-1 text-sm text-red-600">{{ $message }}</p>
-                    @enderror
+                    @enderror --}}
+                    <x-ui.label for="last_name" :value="__('Last Name')" />
+                    <x-ui.input id="last_name" type="text" class="mt-1 block w-full" wire:model="form.last_name" />
+                    <x-ui.input-error :messages="$errors->get('form.last_name')" class="mt-2" />
                 </div>
 
                 <div>
-                    <label class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
+                    {{-- <label class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
                         User Name
                     </label>
                     <input type="text" wire:model="form.username"
                         class="w-full px-4 py-2 border rounded-lg dark:bg-gray-800 dark:border-gray-600">
                     @error('form.username')
                         <p class="mt-1 text-sm text-red-600">{{ $message }}</p>
-                    @enderror
+                    @enderror --}}
+                    <x-ui.label for="username" :value="__('User Name')" />
+                    <x-ui.input id="username" type="text" class="mt-1 block w-full" wire:model="form.username" />
+                    <x-ui.input-error :messages="$errors->get('form.username')" class="mt-2" />
                 </div>
 
                 <div>
-                    <label class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
+                    {{-- <label class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
                         Display Name
                     </label>
                     <input type="text" wire:model="form.display_name"
                         class="w-full px-4 py-2 border rounded-lg dark:bg-gray-800 dark:border-gray-600">
                     @error('form.display_name')
                         <p class="mt-1 text-sm text-red-600">{{ $message }}</p>
-                    @enderror
+                    @enderror --}}
+                    <x-ui.label for="display_name" :value="__('Display Name')" />
+                    <x-ui.input id="display_name" type="text" class="mt-1 block w-full" wire:model="form.display_name" />
+                    <x-ui.input-error :messages="$errors->get('form.display_name')" class="mt-2" />
                 </div>
 
                 <div>
-                    <label class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
+                    {{-- <label class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
                         Date Of Birth
                     </label>
                     <input type="date" wire:model="form.date_of_birth"
                         class="w-full px-4 py-2 border rounded-lg dark:bg-gray-800 dark:border-gray-600">
                     @error('form.date_of_birth')
                         <p class="mt-1 text-sm text-red-600">{{ $message }}</p>
-                    @enderror
+                    @enderror --}}
+                    <x-ui.label for="date_of_birth" :value="__('Date Of Birth')" />
+                    <x-ui.input id="date_of_birth" type="date" class="mt-1 block w-full" wire:model="form.date_of_birth" />
+                    <x-ui.input-error :messages="$errors->get('form.date_of_birth')" class="mt-2" />
                 </div>
 
                 <div>
-                    <label class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
+                    {{-- <label class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
                         Country <span class="text-red-500">*</span>
                     </label>
                     <select wire:model="form.country_id"
@@ -98,43 +113,62 @@
                     </select>
                     @error('form.phone')
                         <p class="mt-1 text-sm text-red-600">{{ $message }}</p>
-                    @enderror
+                    @enderror --}}
+
+                    <x-ui.label for="country_id" :value="__('Country')" required />
+                    <x-ui.select id="country_id" class="mt-1 block w-full" wire:model="form.country_id">
+                        <option value="">{{ __('Select Country') }}</option>
+                        @foreach ($countries as $country)
+                            <option value="{{ $country->id }}">{{ $country->name }}</option>
+                        @endforeach
+                    </x-ui.select>
+                    <x-ui.input-error :messages="$errors->get('form.country_id')" class="mt-2" />
                 </div>
 
                 <div>
-                    <label class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
+                    {{-- <label class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
                         Langugae <span class="text-red-500">*</span>
                     </label>
                     <input type="text" wire:model="form.language"
                         class="w-full px-4 py-2 border rounded-lg dark:bg-gray-800 dark:border-gray-600">
                     @error('form.language')
                         <p class="mt-1 text-sm text-red-600">{{ $message }}</p>
-                    @enderror
+                    @enderror --}}
+                    <x-ui.label for="language" :value="__('Language')" required />
+                    <x-ui.input id="language" type="text" class="mt-1 block w-full" wire:model="form.language" />
+                    <x-ui.input-error :messages="$errors->get('form.language')" class="mt-2" />
                 </div>
 
                 <div>
-                    <label class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
+                    {{-- <label class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
                         Email <span class="text-red-500">*</span>
                     </label>
                     <input type="email" wire:model="form.email"
                         class="w-full px-4 py-2 border rounded-lg dark:bg-gray-800 dark:border-gray-600">
                     @error('form.email')
                         <p class="mt-1 text-sm text-red-600">{{ $message }}</p>
-                    @enderror
+                    @enderror --}}
+                    <x-ui.label for="email" :value="__('Email')" required />
+                    <x-ui.input id="email" type="email" class="mt-1 block w-full" wire:model="form.email" />
+                    <x-ui.input-error :messages="$errors->get('form.email')" class="mt-2" />
                 </div>
                 <div>
-                    <label class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
+                    {{-- <label class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
                         Phone <span class="text-red-500">*</span>
                     </label>
                     <input type="text" wire:model="form.phone"
                         class="w-full px-4 py-2 border rounded-lg dark:bg-gray-800 dark:border-gray-600">
                     @error('form.phone')
                         <p class="mt-1 text-sm text-red-600">{{ $message }}</p>
-                    @enderror
+                    @enderror --}}
+                    <x-ui.label for="phone" :value="__('Phone')" required />
+                    <x-ui.input id="phone" type="text" class="mt-1 block w-full" wire:model="form.phone" />
+                    <x-ui.input-error :messages="$errors->get('form.phone')" class="mt-2" />
                 </div>
 
                 <div>
-                    <label class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
+
+                    {{-- <label class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
                         Status <span class="text-red-500">*</span>
                     </label>
                     <select wire:model="form.account_status"
@@ -146,28 +180,44 @@
                     </select>
                     @error('form.account_status')
                         <p class="mt-1 text-sm text-red-600">{{ $message }}</p>
-                    @enderror
+                    @enderror --}}
+
+                    <x-ui.label for="account_status" :value="__('Status')" required />
+                    <x-ui.select id="account_status" class="mt-1 block w-full" wire:model="form.account_status">
+                        <option value="">{{ __('Select Status') }}</option>
+                        @foreach ($statuses as $status)
+                            <option value="{{ $status['value'] }}">{{ $status['label'] }}</option>
+                        @endforeach
+                    </x-ui.select>
+                    <x-ui.input-error :messages="$errors->get('form.account_status')" class="mt-2" />
                 </div>
 
                 <div>
-                    <label class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
+                    {{-- <label class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
                         Password <span class="text-red-500">*</span>
                     </label>
                     <input type="password" wire:model="form.password"
                         class="w-full px-4 py-2 border rounded-lg dark:bg-gray-800 dark:border-gray-600">
                     @error('form.password')
                         <p class="mt-1 text-sm text-red-600">{{ $message }}</p>
-                    @enderror
+                    @enderror --}}
+
+                    <x-ui.label for="password" :value="__('Password')" required />
+                    <x-ui.input id="password" type="password" class="mt-1 block w-full" wire:model="form.password" />
+                    <x-ui.input-error :messages="$errors->get('form.password')" class="mt-2" />
                 </div>
                 <div>
-                    <label class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
+                    {{-- <label class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
                         Confirm Password <span class="text-red-500">*</span>
                     </label>
                     <input type="password" wire:model="form.password_confirmation"
                         class="w-full px-4 py-2 border rounded-lg dark:bg-gray-800 dark:border-gray-600">
                     @error('form.password_confirmation')
                         <p class="mt-1 text-sm text-red-600">{{ $message }}</p>
-                    @enderror
+                    @enderror --}}
+                    <x-ui.label for="password_confirmation" :value="__('Confirm Password')" required />
+                    <x-ui.input id="password_confirmation" type="password" class="mt-1 block w-full" wire:model="form.password_confirmation" />
+                    <x-ui.input-error :messages="$errors->get('form.password_confirmation')" class="mt-2" />
                 </div>
             </div>
 
