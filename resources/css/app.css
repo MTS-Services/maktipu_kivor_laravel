@@ -1,0 +1,276 @@
+@import 'tailwindcss';
+@import '../../vendor/livewire/flux/dist/flux.css';
+@plugin 'daisyui';
+
+/* ================= CUSTOM CSS START ================= */
+@import './table.css';
+@import './select.css';
+@import './select2.css';
+/* ================= CUSTOM CSS END =================*/
+
+@source '../views';
+@source '../../vendor/laravel/framework/src/Illuminate/Pagination/resources/views/*.blade.php';
+@source '../../vendor/livewire/flux-pro/stubs/**/*.blade.php';
+@source '../../vendor/livewire/flux/stubs/**/*.blade.php';
+
+@custom-variant dark (&:where(.dark, .dark *));
+
+
+:root {
+    /* Base Colors */
+    --color-black: #000000;
+    --color-white: #ffffff;
+
+    /* Primary: Purple */
+    --color-primary-50: #f5f3ff;
+    --color-primary-100: #ede9fe;
+    --color-primary-200: #ddd6fe;
+    --color-primary-300: #c4b5fd;
+    --color-primary-400: #a78bfa;
+    --color-primary-500: #853EFF;
+    --color-primary-600: #7c3aed;
+    --color-primary-700: #6d28d9;
+    --color-primary-800: #5b21b6;
+    --color-primary-900: #351966;
+    --color-primary-950: #1B0C33;
+
+    /* Secondary: Pink */
+    --color-secondary-50: #fdf2f8;
+    --color-secondary-100: #fce7f3;
+    --color-secondary-200: #fbcfe8;
+    --color-secondary-300: #f9a8d4;
+    --color-secondary-400: #f472b6;
+    --color-secondary-500: #FF2E91;
+    --color-secondary-600: #db2777;
+    --color-secondary-700: #be185d;
+    --color-secondary-800: #9d174d;
+    --color-secondary-900: #831843;
+    --color-secondary-950: #50072c;
+
+    /* Accent Colors */
+    --color-accent-light: var(--color-primary-500);
+    --color-accent-content-light: var(--color-primary-700);
+    --color-accent-foreground-light: #fffcfb;
+
+    --color-accent-dark: var(--color-primary-400);
+    --color-accent-content-dark: var(--color-primary-800);
+    --color-accent-foreground-dark: #1a1a1a;
+
+    /* Text Colors */
+    --color-text-primary-light: #2c2920;
+    --color-text-secondary-light: #5a554a;
+    --color-text-muted-light: #89867b;
+
+    --color-text-primary-dark: #e8e6e3;
+    --color-text-secondary-dark: #a9a69e;
+    --color-text-muted-dark: #7d7a73;
+
+    /* Backgrounds */
+    --color-bg-primary-light: oklch(98.5% 0 0);
+    --color-bg-secondary-light: oklch(96.7% 0.001 286.375);
+    --color-bg-tertiary-light: oklch(92% 0.004 286.32);
+
+    --color-bg-primary-dark: oklch(21% 0.006 285.885);
+    --color-bg-secondary-dark: oklch(27.4% 0.006 286.033);
+    --color-bg-tertiary-dark: oklch(37% 0.013 285.805);
+}
+
+
+@theme {
+    /* ======================================================
+    	 	 	 	 	 	 # Colors
+    ======================================================== */
+    --color-zinc-50: var(--color-primary-50);
+    --color-zinc-100: var(--color-primary-100);
+    --color-zinc-200: var(--color-primary-200);
+    --color-zinc-300: var(--color-primary-300);
+    --color-zinc-400: var(--color-primary-400);
+    --color-zinc-500: var(--color-primary-500);
+    --color-zinc-600: var(--color-primary-600);
+    --color-zinc-700: var(--color-primary-700);
+    --color-zinc-800: var(--color-primary-800);
+    --color-zinc-900: var(--color-primary-900);
+    --color-zinc-950: var(--color-primary-950);
+
+    /* --- Secondary: Pink Colors Added Here --- */
+    --color-pink-50: var(--color-secondary-50);
+    --color-pink-100: var(--color-secondary-100);
+    --color-pink-200: var(--color-secondary-200);
+    --color-pink-300: var(--color-secondary-300);
+    --color-pink-400: var(--color-secondary-400);
+    --color-pink-500: var(--color-secondary-500);
+    --color-pink-600: var(--color-secondary-600);
+    --color-pink-700: var(--color-secondary-700);
+    --color-pink-800: var(--color-secondary-800);
+    --color-pink-900: var(--color-secondary-900);
+    --color-pink-950: var(--color-secondary-950);
+    /* ------------------------------------------ */
+
+    --color-accent: var(--color-accent-light);
+    --color-pink: var(--color-secondary-500);
+    --color-accent-content: var(--color-accent-content-light);
+    --color-accent-foreground: var(--color-accent-foreground-light);
+
+    --color-text-primary: var(--color-text-primary-light);
+    --color-text-secondary: var(--color-text-secondary-light);
+    --color-text-muted: var(--color-text-muted-light);
+
+    --color-bg-primary: var(--color-primary-900);
+    --color-bg-secondary: var(--color-primary-950);
+    --color-bg-tertiary: var(--color-secondary-500);
+
+    --color-bg-black: var(--color-black);
+    --color-bg-white: var(--color-white);
+
+    /* ======================================================
+    	 	 	 	 	 	 # Shadows
+    ======================================================== */
+
+    --shadow-glass-card: rgba(0, 0, 0, 0.1) 0px 1px 3px 0px,
+        rgba(0, 0, 0, 0.06) 0px 1px 2px 0px;
+
+    /* ======================================================
+    	 	 	 	 	 	 # Animations
+    ======================================================== */
+    --animate-gradientBG: gradientBG 15s ease infinite;
+
+    @keyframes gradientBG {
+        0% {
+            background-position: 0% 50%;
+        }
+
+        50% {
+            background-position: 100% 50%;
+        }
+
+        100% {
+            background-position: 0% 50%;
+        }
+    }
+
+    /* ======================================================
+    	 	 	 	 	 	 # Breakpoints
+    ======================================================== */
+    --breakpoint-xxs: 480px;
+    --breakpoint-xs: 576px;
+    --breakpoint-sm: 640px;
+    --breakpoint-md: 768px;
+    --breakpoint-lg: 992px;
+    --breakpoint-xl: 1024px;
+    --breakpoint-2xl: 1280px;
+    --breakpoint-3xl: 1536px;
+    --breakpoint-4xl: 1920px;
+    --breakpoint-5xl: 2560px;
+
+}
+
+@layer theme {
+    :root {
+        --color-accent: var(--color-accent-light) !important;
+        --color-accent-content: var(--color-accent-content-light) !important;
+        --color-accent-foreground: var(--color-accent-foreground-light) !important;
+    }
+}
+
+
+@layer base {
+
+    *,
+    ::after,
+    ::before,
+    ::backdrop,
+    ::file-selector-button {
+        border-color: var(--color-gray-200, currentColor);
+        scroll-behavior: smooth;
+        scrollbar-width: thin;
+        scrollbar-color: var(--color-accent) var(--color-accent-content) !important;
+        @apply transition-colors duration-200 ease-in-out text-text-primary;
+    }
+
+
+
+    /* For Webkit-based browsers (Chrome, Edge, Safari) */
+    *::-webkit-scrollbar {
+        height: 8px;
+        width: 8px;
+        background-color: var(--color-accent-content) !important;
+    }
+
+
+    *::-webkit-scrollbar-thumb {
+        background-color: var(--color-accent) !important;
+        border-radius: 9999px !important;
+        box-shadow: 0px 0px 0px rgba(0, 0, 0, 0.75);
+    }
+
+
+    *::-webkit-scrollbar-thumb:hover {
+        background-color: var(--color-accent) !important;
+    }
+
+    *::-webkit-scrollbar-corner {
+        background: transparent;
+    }
+
+
+    /* Custom scrollbar */
+    .custom-scrollbar::-webkit-scrollbar {
+        width: 6px;
+    }
+
+    .custom-scrollbar::-webkit-scrollbar-track {
+        background: rgba(255, 255, 255, 0.1);
+        border-radius: 3px;
+    }
+
+    .custom-scrollbar::-webkit-scrollbar-thumb {
+        background: rgba(255, 255, 255, 0.3);
+        border-radius: 3px;
+    }
+
+    .custom-scrollbar::-webkit-scrollbar-thumb:hover {
+        background: rgba(255, 255, 255, 0.5);
+    }
+
+    .glass-card {
+        @apply backdrop-blur-md bg-gradient-to-tr from-zinc-50/10 via-accent/5 to-zinc-50/10 shadow-glass-card;
+    }
+
+
+    .sidebar-glass-card {
+        @apply bg-gradient-to-tr from-zinc-800/10 via-accent/10 to-zinc-800/10 shadow-glass-card;
+    }
+
+    .animated-bg {
+        @apply bg-[length:400%_400%] animate-gradientBG bg-gradient-to-br from-bg-tertiary via-bg-primary to-bg-tertiary;
+    }
+
+}
+
+.container {
+    @apply mx-auto;
+    max-width: 1280px;
+}
+
+button {
+    @apply cursor-pointer transition duration-150;
+}
+
+button:hover {
+    @apply scale-[1.01];
+}
+
+
+[data-flux-field]:not(ui-radio, ui-checkbox) {
+    @apply grid gap-2;
+}
+
+[data-flux-label] {
+    @apply !mb-0 !leading-tight;
+}
+
+input:focus[data-flux-control],
+textarea:focus[data-flux-control],
+select:focus[data-flux-control] {
+    @apply outline-hidden ring-2 ring-accent ring-offset-2 ring-offset-accent-foreground;
+}
