@@ -1,4 +1,4 @@
-<aside class="transition-all duration-300 ease-in-out z-50 max-h-screen py-2 pl-2"
+ <aside class="transition-all duration-300 ease-in-out z-50 max-h-screen py-2 pl-2"
     :class="{
         'w-72': desktop && sidebar_expanded,
         'w-20': desktop && !sidebar_expanded,
@@ -30,8 +30,8 @@
         <nav class="p-2 space-y-2">
             <x-backend.navlink type="single" icon="layout-dashboard" name="Dashboard" :route="route('admin.dashboard')"
                 active="admin-dashboard" :page_slug="$active" />
-            <x-backend.navlink type="single" icon="chart-pie" name="Analytics" active="analytics" :page_slug="$active" />
-            <x-backend.navlink type="single" icon="inbox" name="Inbox" active="inbox" :page_slug="$active" />
+            {{-- <x-backend.navlink type="single" icon="chart-pie" name="Analytics" active="analytics" :page_slug="$active" />
+            <x-backend.navlink type="single" icon="inbox" name="Inbox" active="inbox" :page_slug="$active" /> --}}
 
             <div class="pt-4 pb-2">
                 <p class="text-xs font-semibold text-zinc-600 dark:text-zinc-400 uppercase"
