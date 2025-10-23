@@ -9,6 +9,7 @@ use Illuminate\Support\Facades\Schema;
 return new class extends Migration
 {
     use AuditColumnsTrait;
+
     /**
      * Run the migrations.
      */

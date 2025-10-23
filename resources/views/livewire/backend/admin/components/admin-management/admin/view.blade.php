@@ -6,10 +6,12 @@
                 {{ __('Admin Profile') }}
             </h2>
             <div class="flex items-center gap-2 w-full sm:w-auto">
+                
                 {{-- <x-ui.button href="{{ route('admin.am.admin.index') }}" type='secondary' class="flex-1 sm:flex-none">
                     <flux:icon name="arrow-left" class="w-4 h-4 stroke-white" />
                     <span class="sm:inline text-white">{{ __('Back') }}</span>
                 </x-ui.button> --}}
+
                 <x-ui.button href="{{ route('admin.am.admin.index') }}" class="flex-1 sm:flex-none">
                     <flux:icon name="arrow-left" class="w-4 h-4 stroke-white" />
                     <span class="sm:inline text-white">{{ __('Back') }}</span>

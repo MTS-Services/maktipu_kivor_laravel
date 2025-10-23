@@ -31,6 +31,7 @@
             <!-- Add other form fields here -->
             <div class="mt-6 space-y-4 grid grid-cols-2 gap-5">
                 <div>
+
                     {{-- <label class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
                         First Name <span class="text-red-500">*</span>
                     </label>
@@ -39,12 +40,14 @@
                     @error('form.first_name')
                         <p class="mt-1 text-sm text-red-600">{{ $message }}</p>
                     @enderror --}}
+
                     <x-ui.label for="first_name" :value="__('First Name')" required />
                     <x-ui.input id="first_name" type="text" class="mt-1 block w-full" wire:model="form.first_name" />
                     <x-ui.input-error :messages="$errors->get('form.first_name')" class="mt-2" />
                 </div>
 
                 <div>
+
                     {{-- <label class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
                         Last Name
                     </label>
@@ -53,12 +56,14 @@
                     @error('form.last_name')
                         <p class="mt-1 text-sm text-red-600">{{ $message }}</p>
                     @enderror --}}
+
                     <x-ui.label for="last_name" :value="__('Last Name')" />
                     <x-ui.input id="last_name" type="text" class="mt-1 block w-full" wire:model="form.last_name" />
                     <x-ui.input-error :messages="$errors->get('form.last_name')" class="mt-2" />
                 </div>
 
                 <div>
+
                     {{-- <label class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
                         User Name
                     </label>
@@ -67,6 +72,7 @@
                     @error('form.username')
                         <p class="mt-1 text-sm text-red-600">{{ $message }}</p>
                     @enderror --}}
+                    
                     <x-ui.label for="username" :value="__('User Name')" />
                     <x-ui.input id="username" type="text" class="mt-1 block w-full" wire:model="form.username" />
                     <x-ui.input-error :messages="$errors->get('form.username')" class="mt-2" />
