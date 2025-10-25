@@ -21,8 +21,8 @@ return new class extends Migration
             $table->softDeletes();
             $table->timestamps();
 
-            /*$this->addMorphedAuditColumns($table);
-            $this->addAdminAuditColumns($table);*/
+           // $this->addMorphedAuditColumns($table);
+            // $this->addAdminAuditColumns($table);
         });
     }
 

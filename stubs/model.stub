@@ -12,7 +12,7 @@ class {{ class }} extends BaseModel
     protected $fillable = [
         'sort_order',
 
-       /here additcolums/
+      //here AuditColumns 
     ];
 
     protected $hidden = [

@@ -2,59 +2,60 @@
 
 namespace App\Models;
 
-use App\Enums\LanguageDirections;
-use App\Enums\LanguageStatus;
+use App\Enums\CurrencyStatus;
 use App\Models\BaseModel;
 
-class Language extends BaseModel
+class Currency extends BaseModel
 {
     protected $fillable = [
         'sort_order',
-        'locale',
+        'code',
+        'symbol',
         'name',
-        'native_name',
-        'flag_icon',
+        'exchange_rate',
+        'decimal_places',
         'status',
         'is_default',
-        'direction',
-
 
         'created_by',
         'updated_by',
         'deleted_by',
     ];
 
+    protected $hidden = [
+        //
+    ];
+
     protected $casts = [
         'is_default' => 'boolean',
-        'status' => LanguageStatus::class,
-        'direction' => LanguageDirections::class,
-
+        'status' => CurrencyStatus::class,
     ];
-    public function scopeRTL($query)
-    {
-        return $query->where('rtl', LanguageDirections::RTL);
-    }
 
-    public function scopeLTR($query)
+    /* =#=#=#=#=#=#=#=#=#=#==#=#=#=#= =#=#=#=#=#=#=#=#=#=#==#=#=#=#=
+                Start of RELATIONSHIPS
+     =#=#=#=#=#=#=#=#=#=#==#=#=#=#= =#=#=#=#=#=#=#=#=#=#==#=#=#=#= */
+
+     //
+
+     /* =#=#=#=#=#=#=#=#=#=#==#=#=#=#= =#=#=#=#=#=#=#=#=#=#==#=#=#=#=
+                End of RELATIONSHIPS
+     =#=#=#=#=#=#=#=#=#=#==#=#=#=#= =#=#=#=#=#=#=#=#=#=#==#=#=#=#= */
+
+     public function scopeActive($query)
     {
-        return $query->where('LTR', LanguageDirections::LTR);
-    }
-    public function scopeActive($query)
-    {
-        return $query->where('status', LanguageStatus::ACTIVE);
+        return $query->where('status', CurrencyStatus::ACTIVE);
     }
 
     public function scopeInactive($query)
     {
-        return $query->where('status', LanguageStatus::INACTIVE);
+        return $query->where('status', CurrencyStatus::INACTIVE);
     }
 
     public function scopeSearch($query, $search)
     {
         return $query->where(function ($q) use ($search) {
             $q->where('name', 'like', "%{$search}%")
-                ->orWhere('native_name', 'like', "%{$search}%")
-                ->orWhere('locale', 'like', "%{$search}%");
+                ->orWhere('code', 'like', "%{$search}%");
         });
     }
 
@@ -64,9 +65,6 @@ class Language extends BaseModel
             $query->where('status', $status);
         });
 
-        $query->when($filters['direction'] ?? null, function ($query, $direction) {
-            $query->where('direction', $direction);
-        });
         $query->when($filters['search'] ?? null, function ($query, $search) {
             $query->search($search);
         });
@@ -84,15 +82,6 @@ class Language extends BaseModel
     {
         return $this->status->color();
     }
-    public function getDerectionLabelAttribute(): string
-    {
-        return $this->direction->label();
-    }
-
-    public function getDerectionColorAttribute(): string
-    {
-        return $this->direction->color();
-    }
 
     public function __construct(array $attributes = [])
     {
@@ -100,8 +89,8 @@ class Language extends BaseModel
         $this->appends = array_merge(parent::getAppends(), [
             'status_label',
             'status_color',
-            'direction_label',
-            'direction_color',
         ]);
     }
+
+
 }
