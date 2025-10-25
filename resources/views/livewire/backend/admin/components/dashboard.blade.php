@@ -103,7 +103,7 @@
             </div>
         </div>
 
-        <div class="grid grid-cols-1 lg:grid-cols-3 gap-6 mt-5"
+        <!-- <div class="grid grid-cols-1 lg:grid-cols-3 gap-6 mt-5"
             x-transition:enter="transition-all duration-500 delay-200"
             x-transition:enter-start="opacity-0 translate-y-8" x-transition:enter-end="opacity-100 translate-y-0">
 
@@ -195,7 +195,7 @@
                     </div>
                 </div>
             </div>
-        </div>
+        </div> -->
     </section>
 
 </main>
