@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Livewire\Backend\Admin\Components\Language;
+namespace App\Livewire\Backend\Admin\Components\Settings\Language;
 
 use App\Enums\LanguageStatus;
 use App\Services\Admin\LanguageService;
@@ -113,7 +113,7 @@ class Trash extends Component
             ['value' => 'deactivate', 'label' => 'Deactivate'],
         ];
 
-        return view('livewire.backend.admin.components.language.trash', [
+        return view('livewire.backend.admin.components.settings.language.trash', [
             'languages' => $languages,
             'statuses' => LanguageStatus::options(),
             'columns' => $columns,

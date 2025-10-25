@@ -1,22 +1,22 @@
 <?php
 
-namespace App\Livewire\Backend\Admin\Components\Language;
+namespace App\Livewire\Backend\Admin\Components\Settings\Language;
 
-use App\DTOs\Language\CreateLanguageDTO;
+use App\DTOs\Language\UpdateLanguageDTO;
 use App\Enums\LanguageDirections;
 use App\Enums\LanguageStatus;
 use App\Livewire\Forms\Backend\Admin\Language\LanguageForm;
+use App\Models\Language;
 use App\Services\Admin\LanguageService;
 use App\Traits\Livewire\WithNotification;
-use Illuminate\Support\Facades\Lang;
 use Livewire\Component;
-use Livewire\Features\SupportFileUploads\WithFileUploads;
 
-class Create extends Component
+class Edit extends Component
 {
-    use WithNotification, WithFileUploads;
+    use WithNotification;
 
     public LanguageForm $form;
+    public Language $language;
 
     protected LanguageService $languageService;
 
@@ -29,12 +29,12 @@ class Create extends Component
     }
 
     /**
-     * Initialize default form values.
+     * Initialize form with existing language data.
      */
-    public function mount(): void
+    public function mount(Language $language): void
     {
-        $this->form->status = LanguageStatus::ACTIVE->value;
-        $this->form->direction = LanguageDirections::LTR->value;
+        $this->language = $language;
+        $this->form->setLanguage($language);
     }
 
     /**
@@ -42,51 +42,52 @@ class Create extends Component
      */
     public function render()
     {
-        return view('livewire.backend.admin.components.language.create', [
+        return view('livewire.backend.admin.components.settings.language.edit', [
             'statuses' => LanguageStatus::options(),
             'directions' => LanguageDirections::options(),
         ]);
     }
 
     /**
-     * Handle form submission to create a new language.
+     * Handle form submission to update the language.
      */
     public function save()
     {
         $this->form->validate();
+
+        // Generate flag icon URL from country code
         $flagIcon = null;
-            if (!empty($this->form->country_code)) {
-                $flagIcon = 'https://flagcdn.com/' . strtolower($this->form->country_code) . '.svg';
-            }
+        if (!empty($this->form->country_code)) {
+            $flagIcon = 'https://flagcdn.com/' . strtolower($this->form->country_code) . '.svg';
+        }
 
         try {
-            $dto = CreateLanguageDTO::fromArray([
+            $dto = UpdateLanguageDTO::fromArray([
                 'locale' => $this->form->locale,
                 'name' => $this->form->name,
-                'country_code'=> $this->form->country_code,
+                'country_code' => $this->form->country_code,
                 'native_name' => $this->form->native_name,
                 'flag_icon' => $flagIcon,
                 'status' => $this->form->status,
                 'is_default' => $this->form->is_default,
                 'direction' => $this->form->direction,
-                'created_by' => admin()->id
-
+                'updated_by' => admin()->id
             ]);
 
-            $language = $this->languageService->createLanguage($dto);
+            $updatedLanguage = $this->languageService->updateLanguage($this->language->id, $dto);
 
-            $this->dispatch('languageCreated');
-            $this->success('Language created successfully.');
+            $this->dispatch('languageUpdated');
+            $this->success('Language updated successfully.');
 
             return $this->redirect(route('admin.language.index'), navigate: true);
 
         } catch (\Exception $e) {
-            $this->error('Failed to create language: ' . $e->getMessage());
+            $this->error('Failed to update language: ' . $e->getMessage());
         }
     }
 
     /**
-     * Cancel creation and redirect back to index.
+     * Cancel editing and redirect back to index.
      */
     public function cancel(): void
     {

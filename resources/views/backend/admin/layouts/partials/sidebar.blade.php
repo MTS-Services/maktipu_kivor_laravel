@@ -30,8 +30,8 @@
         <nav class="p-2 space-y-2">
             <x-backend.navlink type="single" icon="layout-dashboard" name="Dashboard" :route="route('admin.dashboard')"
                 active="admin-dashboard" :page_slug="$active" />
-            <x-backend.navlink type="single" icon="language" name="Language" :route="route('admin.language.index')"
-                active="language" :page_slug="$active" />
+            {{-- <x-backend.navlink type="single" icon="language" name="Language" :route="route('admin.language.index')"
+                active="language" :page_slug="$active" /> --}}
             {{-- <x-backend.navlink type="single" icon="chart-pie" name="Analytics" active="analytics" :page_slug="$active" />
             <x-backend.navlink type="single" icon="inbox" name="Inbox" active="inbox" :page_slug="$active" /> --}}
 
@@ -100,12 +100,12 @@
                         'icon' => 'cog-8-tooth',
                         'active' => 'two-factor',
                     ],
-                    // [
-                    //     'name' => 'Appearance',
-                    //     'route' => '#',
-                    //     'icon' => 'palette',
-                    //     'active' => 'settings-appearance',
-                    // ],
+                    [
+                        'name' => 'Languages',
+                        'route' => route('admin.language.index'),
+                        'icon' => 'language',
+                        'active' => 'language',
+                    ],
                     [
                         'name' => 'Security',
                         'route' => '#',

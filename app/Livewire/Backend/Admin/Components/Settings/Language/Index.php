@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Livewire\Backend\Admin\Components\Language;
+namespace App\Livewire\Backend\Admin\Components\Settings\Language;
 
 use App\Enums\LanguageStatus;
 use App\Services\Admin\LanguageService;
@@ -115,7 +115,7 @@ class Index extends Component
             ['value' => 'suspend', 'label' => 'Suspend'],
         ];
 
-        return view('livewire.backend.admin.components.language.index', [
+        return view('livewire.backend.admin.components.settings.language.index', [
             'languages' => $languages,
             'statuses' => LanguageStatus::options(),
             'columns' => $columns,

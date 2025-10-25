@@ -8,7 +8,7 @@ enum UserAccountStatus: string
     case INACTIVE = 'inactive';
     case SUSPENDED = 'suspended';
     case BANNED = 'banned';
-    case PENDING_VERIFICATION = 'pending_verification';
+    case PENDINGVERIFICATION = 'pending_verification';
 
 
     public function label(): string
@@ -18,7 +18,7 @@ enum UserAccountStatus: string
             self::INACTIVE => 'Inactive',
             self::SUSPENDED => 'Suspended',
             self::BANNED => 'Banned',
-            self::PENDING_VERIFICATION => 'Pending Verification',
+            self::PENDINGVERIFICATION => 'Pending Verification',
         };
     }
 
@@ -30,7 +30,7 @@ enum UserAccountStatus: string
             self::INACTIVE => 'badge-secondary',
             self::SUSPENDED => 'badge-warning',
             self::BANNED => 'badge-danger',
-            self::PENDING_VERIFICATION => 'badge-info',
+            self::PENDINGVERIFICATION => 'badge-info',
         };
     }
     public static function options(): array
