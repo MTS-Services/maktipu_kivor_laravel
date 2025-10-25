@@ -23,6 +23,7 @@ class LanguageSeeder extends Seeder
                 'status' => LanguageStatus::ACTIVE->value,
                 'is_default' => true,
                 'direction' => LanguageDirections::LTR->value,
+                'country_code' => 'US',
             ],
             [
                 'locale' => 'es',
@@ -32,6 +33,7 @@ class LanguageSeeder extends Seeder
                 'status' => LanguageStatus::ACTIVE->value,
                 'is_default' => true,
                 'direction' => LanguageDirections::LTR->value,
+                'country_code' => 'ES',
             ],
             [
                 'locale' => 'fr',
@@ -41,6 +43,7 @@ class LanguageSeeder extends Seeder
                 'status' => LanguageStatus::ACTIVE->value,
                 'is_default' => true,
                 'direction' => LanguageDirections::LTR->value,
+                'country_code' => 'FR',
             ],
             [
                 'locale' => 'bn',
@@ -50,6 +53,7 @@ class LanguageSeeder extends Seeder
                'status' => LanguageStatus::ACTIVE->value,
                 'is_default' => true,
                 'direction' => LanguageDirections::LTR->value,
+                'country_code' => 'BD',
             ],
         ];
 

@@ -17,6 +17,7 @@ class Language extends BaseModel
         'status',
         'is_default',
         'direction',
+        'country_code',
 
 
         'created_by',

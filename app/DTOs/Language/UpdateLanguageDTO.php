@@ -2,67 +2,65 @@
 
 namespace App\DTOs\Language;
 
-use App\Enums\AdminStatus;
-use Illuminate\Http\UploadedFile;
+use App\Enums\LanguageDirections;
+use App\Enums\LanguageStatus;
 
 class UpdateLanguageDTO
 {
     public function __construct(
-        public readonly string $name,
-        public readonly string $email,
-        public readonly ?string $password = null,
-        public readonly ?string $phone = null,
-        public readonly ?string $address = null,
-        public readonly ?AdminStatus $status = null,
-        public readonly ?UploadedFile $avatar = null,
-        public readonly bool $removeAvatar = false,
+        public readonly ?string $locale = null,
+        public readonly ?string $name = null,
+        public readonly ?string $native_name = null,
+        public readonly ?LanguageStatus $status = null,
+        public readonly ?bool $is_default = null,
+        public readonly ?LanguageDirections $direction = null,
+        public readonly ?string $flag_icon = null,
+        public readonly ?string $country_code = null,
+        public readonly ?int $updated_by = null
     ) {}
 
+    /**
+     * Create DTO instance from array
+     */
     public static function fromArray(array $data): self
     {
         return new self(
-            name: $data['name'],
-            email: $data['email'],
-            password: !empty($data['password']) ? $data['password'] : null,
-            phone: $data['phone'] ?? null,
-            address: $data['address'] ?? null,
-            status: isset($data['status']) ? AdminStatus::from($data['status']) : null,
-            avatar: $data['avatar'] ?? null,
-            removeAvatar: $data['remove_avatar'] ?? false,
+            locale: $data['locale'] ?? null,
+            name: $data['name'] ?? null,
+            native_name: $data['native_name'] ?? null,
+            flag_icon: $data['flag_icon'] ?? null,
+            status: isset($data['status']) ? LanguageStatus::from($data['status']) : null,
+            direction: isset($data['direction']) ? LanguageDirections::from($data['direction']) : null,
+            is_default: $data['is_default'] ?? null,
+            country_code: $data['country_code'] ?? null,
+            updated_by: $data['updated_by'] ?? null
         );
     }
 
+    /**
+     * Create DTO from request (Livewire validated data or FormRequest)
+     */
     public static function fromRequest($request): self
     {
         return self::fromArray($request->validated());
     }
 
+    /**
+     * Convert DTO to array for model update
+     */
     public function toArray(): array
     {
-        $data = [
-            'name' => $this->name,
-            'email' => $this->email,
-        ];
+        $data = [];
 
-        // Only include phone if not null
-        if ($this->phone !== null) {
-            $data['phone'] = $this->phone;
-        }
-
-        // Only include address if not null
-        if ($this->address !== null) {
-            $data['address'] = $this->address;
-        }
-
-        // Only include password if provided
-        if ($this->password) {
-            $data['password'] = bcrypt($this->password);
-        }
-
-        // Only include status if provided
-        if ($this->status) {
-            $data['status'] = $this->status->value;
-        }
+        if ($this->locale !== null) $data['locale'] = $this->locale;
+        if ($this->name !== null) $data['name'] = $this->name;
+        if ($this->native_name !== null) $data['native_name'] = $this->native_name;
+        if ($this->flag_icon !== null) $data['flag_icon'] = $this->flag_icon;
+        if ($this->status !== null) $data['status'] = $this->status->value;
+        if ($this->direction !== null) $data['direction'] = $this->direction;
+        if ($this->is_default !== null) $data['is_default'] = $this->is_default;
+        if ($this->country_code !== null) $data['country_code'] = $this->country_code;
+        if ($this->updated_by !== null) $data['updated_by'] = $this->updated_by;
 
         return $data;
     }

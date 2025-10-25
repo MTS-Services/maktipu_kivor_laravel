@@ -83,8 +83,8 @@ class Index extends Component
                 'key' => 'created_by',
                 'label' => 'Created By',
                 'format' => function ($laguage) {
-                    return $laguage->createdBy
-                        ? '<span class="text-sm font-medium text-gray-900 dark:text-gray-100">' . $laguage->createdBy->name . '</span>'
+                    return $laguage->creater_admin
+                        ? '<span class="text-sm font-medium text-gray-900 dark:text-gray-100">' . $laguage->creater_admin->name . '</span>'
                         : '<span class="text-sm text-gray-500 dark:text-gray-400 italic">System</span>';
                 }
             ],

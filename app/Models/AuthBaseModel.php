@@ -55,6 +55,7 @@ class AuthBaseModel extends Authenticatable
         return $this->belongsTo(Admin::class, 'deleted_by', 'id')->select(['name', 'id', 'status']);
     }
 
+
     public function creater()
     {
         return $this->morphTo();

@@ -227,3 +227,4 @@ if (! function_exists('is_phone_verified')) {
         return !is_null($model?->phone_verified_at);
     }
 }
+

@@ -20,6 +20,7 @@ return new class extends Migration
             $table->unsignedBigInteger('sort_order')->default(0);
             $table->string('locale')->unique()->comment('en, es, fr, bn');
             $table->string('name')->unique()->comment('English, Spanish, France');
+            $table->string('country_code')->unique()->comment('us, es, fr, bd');
             $table->string('native_name')->nullable()->comment('English, Español');
             $table->string('flag_icon')->nullable();
             $table->string('status')->default(LanguageStatus::ACTIVE->value);

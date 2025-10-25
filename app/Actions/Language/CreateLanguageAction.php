@@ -21,11 +21,6 @@ class CreateLanguageAction
         return DB::transaction(function () use ($dto) {
             $data = $dto->toArray();
 
-            // Handle avatar upload
-            if ($dto->avatar) {
-                $data['avatar'] = $dto->avatar->store('avatars', 'public');
-            }
-
             // Create user
             $language = $this->languageRepository->create($data);
 
