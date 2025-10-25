@@ -13,27 +13,32 @@
 
     <div class="glass-card rounded-2xl p-6 mb-6">
         <form wire:submit="save">
-           
+
             <!-- Language Fields -->
             <div class="mt-6 space-y-4 grid grid-cols-2 gap-5">
-                <!-- Locale -->
-                <div>
-                    <x-ui.label for="locale" :value="__('Locale')" required />
-                    <x-ui.input id="locale" type="text" class="mt-1 block w-full" wire:model="form.locale" placeholder="en, es, fr, bn" />
-                    <x-ui.input-error :messages="$errors->get('form.locale')" class="mt-2" />
-                </div>
 
                 <!-- Name -->
                 <div>
                     <x-ui.label for="name" :value="__('Name')" required />
-                    <x-ui.input id="name" type="text" class="mt-1 block w-full" wire:model="form.name" placeholder="English, Spanish, French" />
+                    <x-ui.input id="name" type="text" class="mt-1 block w-full" wire:model="form.name"
+                        placeholder="English, Spanish, French" />
                     <x-ui.input-error :messages="$errors->get('form.name')" class="mt-2" />
                 </div>
+
+                <!-- Locale -->
+                <div>
+                    <x-ui.label for="locale" :value="__('Locale')" required />
+                    <x-ui.input id="locale" type="text" class="mt-1 block w-full" wire:model="form.locale"
+                        placeholder="en, es, fr, bn" />
+                    <x-ui.input-error :messages="$errors->get('form.locale')" class="mt-2" />
+                </div>
+
 
                 <!-- Native Name -->
                 <div>
                     <x-ui.label for="native_name" :value="__('Native Name')" />
-                    <x-ui.input id="native_name" type="text" class="mt-1 block w-full" wire:model="form.native_name" placeholder="English, Español, Français" />
+                    <x-ui.input id="native_name" type="text" class="mt-1 block w-full" wire:model="form.native_name"
+                        placeholder="English, Español, Français" />
                     <x-ui.input-error :messages="$errors->get('form.native_name')" class="mt-2" />
                 </div>
 
@@ -41,22 +46,15 @@
                 <div>
                     <x-ui.label for="country_code" :value="__('Country Code')" required />
                     <div class="flex gap-2">
-                        <x-ui.input 
-                            id="country_code" 
-                            type="text" 
-                            class="mt-1 block w-full lowercase" 
-                            wire:model.live.debounce.300ms="form.country_code" 
-                            placeholder="us, es, fr, bd" 
-                            maxlength="2"
-                        />
-                        @if($form->country_code)
-                            <div class="mt-1 flex items-center justify-center w-16 h-10 border border-gray-300 dark:border-gray-600 rounded-lg overflow-hidden bg-gray-50 dark:bg-gray-800">
-                                <img 
-                                    src="https://flagcdn.com/{{ strtolower($form->country_code) }}.svg" 
-                                    alt="{{ $form->country_code }} flag"
-                                    class="w-full h-full object-cover"
-                                    onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';"
-                                >
+                        <x-ui.input id="country_code" type="text" class="mt-1 block w-full lowercase"
+                            wire:model.live.debounce.300ms="form.country_code" placeholder="us, es, fr, bd"
+                            maxlength="2" />
+                        @if ($form->country_code)
+                            <div
+                                class="mt-1 flex items-center justify-center w-16 h-10 border border-gray-300 dark:border-gray-600 rounded-lg overflow-hidden bg-gray-50 dark:bg-gray-800">
+                                <img src="https://flagcdn.com/{{ strtolower($form->country_code) }}.svg"
+                                    alt="{{ $form->country_code }} flag" class="w-full h-full object-cover"
+                                    onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
                                 <div class="hidden items-center justify-center w-full h-full text-gray-400 text-xs">
                                     N/A
                                 </div>
@@ -64,7 +62,8 @@
                         @endif
                     </div>
                     <x-ui.input-error :messages="$errors->get('form.country_code')" class="mt-2" />
-                    <p class="mt-1 text-xs text-gray-500 dark:text-gray-400">{{ __('Enter 2-letter ISO country code (e.g., us, gb, bd)') }}</p>
+                    <p class="mt-1 text-xs text-gray-500 dark:text-gray-400">
+                        {{ __('Enter 2-letter ISO country code (e.g., us, gb, bd)') }}</p>
                 </div>
 
                 <!-- Direction (Dynamic from Enum) -->
@@ -72,8 +71,8 @@
                     <x-ui.label for="direction" :value="__('Text Direction')" required />
                     <x-ui.select id="direction" class="mt-1 block w-full" wire:model="form.direction">
                         <option value="">{{ __('Select Direction') }}</option>
-                        @foreach($directions as $direction)
-                          <option value="{{ $direction['value'] }}">{{ $direction['label'] }}</option>
+                        @foreach ($directions as $direction)
+                            <option value="{{ $direction['value'] }}">{{ $direction['label'] }}</option>
                         @endforeach
                     </x-ui.select>
                     <x-ui.input-error :messages="$errors->get('form.direction')" class="mt-2" />

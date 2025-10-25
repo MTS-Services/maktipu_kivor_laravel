@@ -10,7 +10,7 @@
 
         @case('admin.language.edit')
             <x-slot name="title">Language Create</x-slot>
-            <livewire:backend.admin.components.language.edit :admin="$admin"/>
+            <livewire:backend.admin.components.language.edit :language="$language"/>
         @break
 
         @case('admin.language.trash')
