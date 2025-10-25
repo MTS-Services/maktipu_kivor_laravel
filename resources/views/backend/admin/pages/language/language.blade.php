@@ -20,7 +20,7 @@
 
         @case('admin.language.view')
             <x-slot name="title">Language Create</x-slot>
-            <livewire:backend.admin.components.language.view :admin="$admin"/>
+            <livewire:backend.admin.components.language.view :language="$language"/>
         @break
 
         @default
