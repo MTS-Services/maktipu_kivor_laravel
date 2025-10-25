@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers\Backend\language\Language;
+namespace App\Http\Controllers\Backend\Admin\Language;
 
 use App\Http\Controllers\Controller;
 use App\Models\Language;
@@ -10,7 +10,7 @@ class LanguageController extends Controller
 {
 
 
-    protected $masterView = 'backend.language.pages.language.language';
+    protected $masterView = 'backend.admin.pages.language.language';
 
     public function index()
     {

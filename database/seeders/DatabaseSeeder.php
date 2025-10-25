@@ -15,15 +15,11 @@ class DatabaseSeeder extends Seeder
     public function run(): void
     {
           $this->call([
+            AdminSeeder::class,
             CountrySeeder::class,
             UserSeeder::class,
+            LanguageSeeder::class
         ]);
 
-        Admin::create([
-            'name' => 'Admin',
-            'email' => 'admin@dev.com',
-            'password' => 'admin@dev.com',
-            'email_verified_at' => now(),
-        ]);
     }
 }

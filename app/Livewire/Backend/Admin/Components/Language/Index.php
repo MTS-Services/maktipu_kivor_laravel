@@ -36,19 +36,20 @@ class Index extends Component
         );
 
         $columns = [
-            [
-                'key' => 'id',
-                'label' => 'ID',
-                'sortable' => true
-            ],
+          
             [
                 'key' => 'name',
                 'label' => 'Name',
                 'sortable' => true
             ],
             [
-                'key' => 'email',
-                'label' => 'Email',
+                'key' => 'locale',
+                'label' => 'Locale',
+                'sortable' => true
+            ],
+            [
+                'key' => 'native_name',
+                'label' => 'Native Name',
                 'sortable' => true
             ],
             [
@@ -93,12 +94,12 @@ class Index extends Component
             [
                 'key' => 'id',
                 'label' => 'View',
-                'route' => 'admin.am.admin.view',
+                // 'route' => 'admin.am.admin.view',
             ],
             [
                 'key' => 'id',
                 'label' => 'Edit',
-                'route' => 'admin.am.admin.edit'
+                // 'route' => 'admin.am.admin.edit'
             ],
             [
                 'key' => 'id',
@@ -115,7 +116,7 @@ class Index extends Component
         ];
 
         return view('livewire.backend.admin.components.language.index', [
-            'admins' => $languages,
+            'languages' => $languages,
             'statuses' => LanguageStatus::options(),
             'columns' => $columns,
             'actions' => $actions,

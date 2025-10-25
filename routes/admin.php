@@ -5,7 +5,7 @@ use App\Livewire\Backend\Admin\Components\Dashboard;
 use App\Livewire\Backend\Admin\Components\UserManagement\AllUser;
 use App\Http\Controllers\Backend\Admin\UserManagement\UserController;
 use App\Http\Controllers\Backend\Admin\AdminManagement\AdminController;
-use App\Http\Controllers\Backend\language\Language\LanguageController;
+use App\Http\Controllers\Backend\Admin\Language\LanguageController;
 use App\Models\Language;
 
 Route::middleware(['auth:admin', 'admin', 'adminVerify'])->name('admin.')->prefix('admin')->group(function () {
