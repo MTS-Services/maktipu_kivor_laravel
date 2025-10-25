@@ -42,14 +42,14 @@ class Index extends Component
                 'label' => 'Name',
                 'sortable' => true
             ],
-            [
-                'key' => 'locale',
-                'label' => 'Locale',
+                [
+                'key' => 'native_name',
+                'label' => 'Native Name',
                 'sortable' => true
             ],
             [
-                'key' => 'native_name',
-                'label' => 'Native Name',
+                'key' => 'locale',
+                'label' => 'Locale',
                 'sortable' => true
             ],
             [
