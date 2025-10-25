@@ -138,7 +138,10 @@ class Admin extends AuthBaseModel
     {
         parent::__construct($attributes);
         $this->appends = array_merge(parent::getAppends(), [
-            //
+            'avatar_url',
+            'status_label',
+            'status_color',
+            
         ]);
     }
 

@@ -1,22 +1,25 @@
 <?php
 
-namespace {{ namespace }};
+namespace App\Enums;
 
-enum {{ class }}: string
+enum LanguageDirections: string
 {
-   //  case ACTIVE = 'active';
+    case RTL = 'rtl';
+    case LTR = 'ltr';
 
     public function label(): string
     {
         return match($this) {
-            // self::ACTIVE => 'Active',
+            self::RTL => 'RTL',
+            self::LTR => 'LTR',
         };
     }
 
     public function color(): string
     {
         return match($this) {
-            // self::ACTIVE => 'success',
+            self::RTL => 'badge-success',
+            self::LTR => 'badge-info',
         };
     }
 

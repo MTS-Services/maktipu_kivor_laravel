@@ -2,20 +2,16 @@
 
 namespace App\Enums;
 
-enum AdminStatus: string
+enum LanguageStatus: string
 {
-    case ACTIVE = 'active';
-    case INACTIVE = 'inactive';
-    case SUSPENDED = 'suspended';
-    case PENDING = 'pending';
+   case ACTIVE = 'active';
+   case INACTIVE = 'inactive';
 
     public function label(): string
     {
         return match($this) {
             self::ACTIVE => 'Active',
             self::INACTIVE => 'Inactive',
-            self::SUSPENDED => 'Suspended',
-            self::PENDING => 'Pending',
         };
     }
 
@@ -23,9 +19,7 @@ enum AdminStatus: string
     {
         return match($this) {
             self::ACTIVE => 'badge-success',
-            self::INACTIVE => 'badge-secondary',
-            self::SUSPENDED => 'badge-warning',
-            self::PENDING => 'badge-error',
+            self::INACTIVE => 'badge-error',
         };
     }
 
