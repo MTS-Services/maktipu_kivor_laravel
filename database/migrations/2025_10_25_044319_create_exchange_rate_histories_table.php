@@ -13,17 +13,17 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('currencies', function (Blueprint $table) {
+        Schema::create('exchange_rate_histories', function (Blueprint $table) {
             $table->id();
             $table->unsignedBigInteger('sort_order')->default(0);
-            $table->string('code')->unique()->comment('USD, EUR, GBP, BDT');
-            $table->string('symbol')->nullable()->comment('&#xa3;, &#xa2;, &#x24;');
-            $table->string('name')->unique()->comment('US Dollar, Euro');
-            $table->decimal('exchange_rate', 10, 6)->comment('against base currency');
-            $table->integer('decimal_places')->default(2);
+            $table->unsignedBigInteger('base_currency');
+            $table->unsignedBigInteger('target_currency');
 
-            $table->enum('status', ['active', 'inactive'])->default('active');
-            $table->boolean('is_default')->default(false);
+            $table->decimal('rate', 10, 6);
+            $table->timestamp('last_updated_at')->nullable();
+
+            $table->foreign('base_currency')->references('id')->on('currencies')->cascadeOnDelete()->cascadeOnUpdate();
+            $table->foreign('target_currency')->references('id')->on('currencies')->cascadeOnDelete()->cascadeOnUpdate();
 
             $table->softDeletes();
             $table->timestamps();
@@ -36,6 +36,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('currencies');
+        Schema::dropIfExists('exchange_rate_histories');
     }
 };

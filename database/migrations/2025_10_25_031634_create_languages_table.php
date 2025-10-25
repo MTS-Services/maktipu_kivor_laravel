@@ -17,7 +17,7 @@ return new class extends Migration
     {
         Schema::create('languages', function (Blueprint $table) {
             $table->id();
-            $table->bigInteger('sort_order')->default(0);
+            $table->unsignedBigInteger('sort_order')->default(0);
             $table->string('locale')->unique()->comment('en, es, fr, bn');
             $table->string('name')->unique()->comment('English, Spanish, France');
             $table->string('native_name')->nullable()->comment('English, Español');
@@ -25,7 +25,7 @@ return new class extends Migration
             $table->string('status')->default(LanguageStatus::ACTIVE->value);
             $table->boolean('is_default')->default(false);
             $table->string('direction')->default(LanguageDirections::LTR->value);
-            
+
             $table->timestamps();
             $table->softDeletes();
             $this->addAdminAuditColumns($table);

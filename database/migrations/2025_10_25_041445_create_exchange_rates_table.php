@@ -7,7 +7,7 @@ use Illuminate\Support\Facades\Schema;
 
 return new class extends Migration
 {
-     use AuditColumnsTrait;
+    use AuditColumnsTrait;
     /**
      * Run the migrations.
      */
@@ -15,13 +15,13 @@ return new class extends Migration
     {
         Schema::create('exchange_rates', function (Blueprint $table) {
             $table->id();
-            $table->bigInteger('sort_order')->default(0);
-            $table->bigInteger('base_currency');
-            $table->bigInteger('target_currency');
+            $table->unsignedBigInteger('sort_order')->default(0);
+            $table->unsignedBigInteger('base_currency');
+            $table->unsignedBigInteger('target_currency');
 
             $table->decimal('rate', 10, 6);
             $table->timestamp('last_updated_at')->nullable();
-            
+
             $table->foreign('base_currency')->references('id')->on('currencies')->cascadeOnDelete()->cascadeOnUpdate();
             $table->foreign('target_currency')->references('id')->on('currencies')->cascadeOnDelete()->cascadeOnUpdate();
 
@@ -30,7 +30,7 @@ return new class extends Migration
             $this->addAdminAuditColumns($table);
         });
     }
-    
+
 
     /**
      * Reverse the migrations.

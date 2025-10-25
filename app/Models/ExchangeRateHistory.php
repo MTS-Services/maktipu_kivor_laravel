@@ -4,7 +4,7 @@ namespace App\Models;
 
 use App\Models\BaseModel;
 
-class ExchangeRate extends BaseModel
+class ExchangeRateHistory extends BaseModel
 {
     //
 
