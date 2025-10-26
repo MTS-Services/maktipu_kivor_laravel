@@ -51,6 +51,11 @@
     --color-text-secondary-dark: oklch(72.516% 0.00008 271.152);
     --color-text-muted-dark: oklch(56.241% 0.00006 271.152);
 
+    /* Icon Colors */
+    --color-icon-primary-light: #FF7F00;
+    --color-icon-secondary-light: #5C4C3D;
+
+
     /* Backgrounds */
     --color-bg-primary-light: oklch(94.23% 0.00959 72.463);
     --color-bg-secondary-light: oklch(98.657% 0.00501 67.263);
@@ -128,6 +133,12 @@
             background-position: 0% 50%;
         }
     }
+
+    /* ======================================================
+    	 	 	 	 	 	 # Containers
+    ======================================================== */
+
+    --container-8xl: 85rem;
 
     /* ======================================================
     	 	 	 	 	 	 # Breakpoints
@@ -255,8 +266,22 @@
     a {
         @apply text-sm sm:text-base text-text-primary font-archivo;
     }
+
 }
 
+@utility container {
+    margin-inline: auto;
+    max-width: 100%;
+    padding-inline: 1rem;
+
+    @media (width >=theme(--breakpoint-2xl)) {
+        max-width: 1392px;
+    }
+
+    /* @variant 2xl {
+        padding-inline: 0rem;
+    } */
+}
 
 [data-flux-field]:not(ui-radio, ui-checkbox) {
     @apply grid gap-2;

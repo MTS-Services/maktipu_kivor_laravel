@@ -1,12 +1,13 @@
-<header class="py-5 backdrop-blur-2xl transition-all duration-300">
+<header class="sticky top-0 left-0 py-5 mt-5 bg-transparent backdrop-blur-2xl border-none">
     <div class="container flex items-center justify-between">
         <div class="flex items-center justify-start gap-12">
             <a href="{{ route('home') }}" wire:navigate class="w-full max-w-48 inline-flex">
                 <img src="{{ site_logo() }}" alt="{{ site_name() }}" class="w-full object-cover">
             </a>
+
             <nav class="flex items-center justify-start gap-5">
                 <a href="" wire:navigate
-                    class="px-3 text-base sm:text-lg hover:text-zinc-500 transition-all duration-150 ease-linear">{{ __('Ladies') }}</a>
+                    class="px-3 text-base sm:text-lg hover:text-zinc-500 transition-all duration-150 ease-linear">{{ __('Ladis') }}</a>
                 <a href="" wire:navigate
                     class="px-3 text-base sm:text-lg hover:text-zinc-500 transition-all duration-150 ease-linear">{{ __('Men') }}</a>
                 <a href="" wire:navigate
