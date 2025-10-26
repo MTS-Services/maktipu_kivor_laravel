@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Archivo:ital,wght@0,100..900;1,100..900&family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Playfair+Display:ital,wght@0,400..900;1,400..900&display=swap');
+
 @import 'tailwindcss';
 @import '../../vendor/livewire/flux/dist/flux.css';
 @plugin 'daisyui';
@@ -53,17 +55,14 @@
     --color-text-muted-dark: #9b9186;
 
     /* Backgrounds */
-    --color-bg-primary-light: oklch(98.5% 0 80);
-    /* very light orange tint */
-    --color-bg-secondary-light: oklch(96.7% 0.01 75);
-    --color-bg-tertiary-light: oklch(92% 0.02 70);
+    --color-bg-primary-light: oklch(96.115% 0.00011 271.152);
+    --color-bg-secondary-light: oklch(92.494% 0.00011 271.152);
+    --color-bg-tertiary-light: oklch(88.531% 0.0001 271.152);
 
-    --color-bg-primary-dark: oklch(22% 0.02 65);
-    --color-bg-secondary-dark: oklch(28% 0.03 60);
-    --color-bg-tertiary-dark: oklch(36% 0.04 55);
+    --color-bg-primary-dark: oklch(15.907% 0.00002 271.152);
+    --color-bg-secondary-dark: oklch(21.779% 0.00002 271.152);
+    --color-bg-tertiary-dark: oklch(26.862% 0.00003 271.152);
 }
-
-
 
 @theme {
     /* ======================================================
@@ -81,22 +80,7 @@
     --color-zinc-900: var(--color-primary-900);
     --color-zinc-950: var(--color-primary-950);
 
-    /* --- Secondary: Pink Colors Added Here --- */
-    --color-pink-50: var(--color-secondary-50);
-    --color-pink-100: var(--color-secondary-100);
-    --color-pink-200: var(--color-secondary-200);
-    --color-pink-300: var(--color-secondary-300);
-    --color-pink-400: var(--color-secondary-400);
-    --color-pink-500: var(--color-secondary-500);
-    --color-pink-600: var(--color-secondary-600);
-    --color-pink-700: var(--color-secondary-700);
-    --color-pink-800: var(--color-secondary-800);
-    --color-pink-900: var(--color-secondary-900);
-    --color-pink-950: var(--color-secondary-950);
-    /* ------------------------------------------ */
-
     --color-accent: var(--color-accent-light);
-    --color-pink: var(--color-secondary-500);
     --color-accent-content: var(--color-accent-content-light);
     --color-accent-foreground: var(--color-accent-foreground-light);
 
@@ -104,9 +88,9 @@
     --color-text-secondary: var(--color-text-secondary-light);
     --color-text-muted: var(--color-text-muted-light);
 
-    --color-bg-primary: var(--color-primary-900);
-    --color-bg-secondary: var(--color-primary-950);
-    --color-bg-tertiary: var(--color-secondary-500);
+    --color-bg-primary: var(--color-bg-primary-light);
+    --color-bg-secondary: var(--color-bg-secondary-light);
+    --color-bg-tertiary: var(--color-bg-tertiary-light);
 
     --color-bg-black: var(--color-black);
     --color-bg-white: var(--color-white);
@@ -117,6 +101,14 @@
 
     --shadow-glass-card: rgba(0, 0, 0, 0.1) 0px 1px 3px 0px,
         rgba(0, 0, 0, 0.06) 0px 1px 2px 0px;
+
+    /* ======================================================
+    	 	 	 	 	 	 # Font Families
+    ======================================================== */
+
+    --font-inter: "Inter", sans-serif;
+    --font-archivo: "Archivo", sans-serif;
+    --font-playfair-display: "Playfair Display", serif;
 
     /* ======================================================
     	 	 	 	 	 	 # Animations
@@ -159,6 +151,22 @@
         --color-accent-content: var(--color-accent-content-light) !important;
         --color-accent-foreground: var(--color-accent-foreground-light) !important;
     }
+
+    .dark {
+        --color-accent: var(--color-accent-dark);
+        --color-accent-content: var(--color-accent-content-dark);
+        --color-accent-foreground: var(--color-accent-foreground-dark);
+
+        --color-text-primary: var(--color-text-primary-dark);
+        --color-text-secondary: var(--color-text-secondary-dark);
+        --color-text-muted: var(--color-text-muted-dark);
+
+        --color-bg-primary: var(--color-bg-primary-dark);
+        --color-bg-secondary: var(--color-bg-secondary-dark);
+        --color-bg-tertiary: var(--color-bg-tertiary-dark);
+
+        --color-text-new: var(--color-text-new-dark);
+    }
 }
 
 
@@ -173,10 +181,13 @@
         scroll-behavior: smooth;
         scrollbar-width: thin;
         scrollbar-color: var(--color-accent) var(--color-accent-content) !important;
-        @apply transition-colors duration-200 ease-in-out text-text-primary;
+        @apply transition-colors duration-200 ease-in-out text-text-primary font-inter;
     }
 
-
+    .dark * {
+        border-color: var(--color-gray-700, currentColor);
+        scrollbar-color: var(--color-accent-dark) var(--color-accent-content-dark) !important;
+    }
 
     /* For Webkit-based browsers (Chrome, Edge, Safari) */
     *::-webkit-scrollbar {
@@ -185,6 +196,9 @@
         background-color: var(--color-accent-content) !important;
     }
 
+    .dark *::-webkit-scrollbar {
+        background-color: var(--color-accent-content-dark) !important;
+    }
 
     *::-webkit-scrollbar-thumb {
         background-color: var(--color-accent) !important;
@@ -192,9 +206,16 @@
         box-shadow: 0px 0px 0px rgba(0, 0, 0, 0.75);
     }
 
+    .dark *::-webkit-scrollbar-thumb {
+        background-color: var(--color-accent-dark) !important;
+    }
 
     *::-webkit-scrollbar-thumb:hover {
         background-color: var(--color-accent) !important;
+    }
+
+    .dark *::-webkit-scrollbar-thumb:hover {
+        background-color: var(--color-accent-dark) !important;
     }
 
     *::-webkit-scrollbar-corner {
@@ -222,31 +243,76 @@
     }
 
     .glass-card {
-        @apply backdrop-blur-md bg-gradient-to-tr from-zinc-50/10 via-accent/5 to-zinc-50/10 shadow-glass-card;
+        @apply backdrop-blur-md bg-linear-to-tr from-zinc-50/10 via-accent/5 to-zinc-50/10 shadow-glass-card;
     }
 
 
     .sidebar-glass-card {
-        @apply bg-gradient-to-tr from-zinc-800/10 via-accent/10 to-zinc-800/10 shadow-glass-card;
+        @apply bg-linear-to-tr from-zinc-800/10 via-accent/10 to-zinc-800/10 shadow-glass-card;
     }
+
+    .dark .glass-card,
+    .dark .sidebar-glass-card {
+        @apply from-zinc-50/5 via-zinc-600/5 to-zinc-50/5;
+    }
+
+
 
     .animated-bg {
-        @apply bg-[length:400%_400%] animate-gradientBG bg-gradient-to-br from-bg-tertiary via-bg-primary to-bg-tertiary;
+        @apply bg-size-[400%_400%] animate-gradientBG  bg-linear-to-br from-bg-tertiary via-bg-primary to-bg-secondary;
     }
 
+
 }
 
-.container {
-    @apply mx-auto;
-    max-width: 1280px;
-}
+@layer components {
+    p {
+        font-size: var(--text-base);
+        color: var(--color-text-primary);
+        font-family: var(--font-inter);
+    }
 
-button {
-    @apply cursor-pointer transition duration-150;
-}
+    h1 {
+        font-size: var(--text-2xl--line-height);
+        font-weight: var(--font-weight-semibold);
+        color: var(--color-text-secondary);
+        font-family: var(--font-archivo);
+    }
 
-button:hover {
-    @apply scale-[1.01];
+    h2 {
+        font-size: var(--text-xl);
+        font-weight: var(--font-weight-semibold);
+        color: var(--color-text-secondary);
+        font-family: var(--font-archivo);
+    }
+
+    h3 {
+        font-size: var(--text-lg);
+        font-weight: var(--font-weight-semibold);
+        color: var(--color-text-secondary);
+        font-family: var(--font-archivo);
+    }
+
+    h4 {
+        font-size: var(--text-base);
+        font-weight: var(--font-weight-semibold);
+        color: var(--color-text-secondary);
+        font-family: var(--font-archivo);
+    }
+
+    h5 {
+        font-size: var(--text-sm);
+        font-weight: var(--font-weight-semibold);
+        color: var(--color-text-secondary);
+        font-family: var(--font-archivo);
+    }
+
+    h6 {
+        font-size: var(--text-xs);
+        font-weight: var(--font-weight-semibold);
+        color: var(--color-text-secondary);
+        font-family: var(--font-archivo);
+    }
 }
 
 
@@ -255,7 +321,7 @@ button:hover {
 }
 
 [data-flux-label] {
-    @apply  !mb-0 !leading-tight;
+    @apply !mb-0 !leading-tight;
 }
 
 input:focus[data-flux-control],

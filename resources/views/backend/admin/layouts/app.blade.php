@@ -11,7 +11,6 @@
     </title>
     @vite(['resources/css/app.css', 'resources/js/app.js'])
     <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.9.1/chart.min.js"></script>
-    <link rel="stylesheet" href="{{ asset('assets/css/dashboard.css') }}">
     @fluxAppearance
     <style>
         @keyframes bounce-dot {
@@ -25,6 +24,10 @@
                 transform: translateY(-20px);
             }
         }
+
+        :root {
+            --livewire-progress-bar-color: var(--color-zinc-500) !important;
+        }
     </style>
     <script>
         document.addEventListener('livewire:initialized', function() {
@@ -36,7 +39,7 @@
     @stack('styles')
 </head>
 
-<body x-data="dashboardData()" class="h-full max-h-screen antialiased !bg-white">
+<body x-data="dashboardData()" class="h-full max-h-screen antialiased animated-bg">
     <div x-show="mobile_menu_open && !desktop" x-transition:enter="transition-all duration-300 ease-out"
         x-transition:enter-start="opacity-0" x-transition:enter-end="opacity-100"
         x-transition:leave="transition-all duration-300 ease-in" x-transition:leave-start="opacity-100"

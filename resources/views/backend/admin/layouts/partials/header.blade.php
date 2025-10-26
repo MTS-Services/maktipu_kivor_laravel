@@ -26,25 +26,25 @@
             <div class="flex items-center gap-3">
                 <!-- Search -->
                 {{-- <x-admin.search-form placeholder="Search here..." /> --}}
-                {{-- <flux:input type="search" placeholder="Search here..."
+                <flux:input type="search" placeholder="Search here..."
                     class="w-32 sm:w-48 lg:w-64 !px-3 !py-2 !rounded-xl !bg-bg-black/10 dark:!bg-bg-white/10 !border-0 focus:!ring-2 focus:!ring-white/20 focus:!outline-none transition-all duration-200"
-                    icon="magnifying-glass" /> --}}
+                    icon="magnifying-glass" />
 
                 {{-- <!-- Theme Toggle --> --}}
-                {{-- <flux:button x-data x-on:click="$flux.dark = !$flux.dark" variant="subtle"
+                <flux:button x-data x-on:click="$flux.dark = !$flux.dark" variant="subtle"
                     aria-label="Toggle dark mode">
                     <flux:icon name="moon" class="w-5 h-5" x-show="$flux.dark" />
                     <flux:icon name="sun" class="w-5 h-5" x-show="!$flux.dark" />
-                </flux:button> --}}
+                </flux:button>
 
                 <!-- Notifications -->
-                {{-- <button @click="toggleNotifications()"
+                <button @click="toggleNotifications()"
                     class="relative p-2 rounded-xl hover:bg-bg-black/10 dark:hover:bg-bg-white/10 transition-colors">
                     <flux:icon name="bell" class="w-5 h-5 text-zinc-500" />
                     <div x-show="notifications.length > 0"
                         class="absolute top-1 right-1 w-2 h-2 bg-red-400 rounded-full notification-badge">
                     </div>
-                </button> --}}
+                </button>
 
                 <!-- Profile -->
                 <div class="relative" x-data="{ open: false }">

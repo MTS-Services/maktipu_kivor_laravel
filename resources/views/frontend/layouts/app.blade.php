@@ -13,7 +13,7 @@
     @fluxAppearance()
     <style>
         :root {
-            --livewire-progress-bar-color: var(--accent);
+            --livewire-progress-bar-color: var(--color-zinc-500) !important;
         }
     </style>
     @stack('styles')
@@ -26,7 +26,7 @@
     </main>
     <livewire:frontend.partials.footer />
     @fluxScripts()
-    
+
     @stack('scripts')
 </body>
 
