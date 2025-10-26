@@ -10,20 +10,19 @@
         {{ site_name() }}
     </title>
     @vite(['resources/css/app.css', 'resources/js/app.js'])
-    <style>
-        :root {
-            --livewire-progress-bar-color: var(--color-zinc-500) !important;
-        }
-    </style>
     @stack('styles')
 </head>
 
-<body class="h-screen flex flex-col">
+<body class="min-h-screen flex flex-col custom-scrollbar overflow-y-auto bg-bg-primary">
     <livewire:frontend.partials.header :pageSlug="$pageSlug ?? 'home'" />
-    <main class="flex-1">
+
+    <div class="flex-1">
         {{ $slot }}
-    </main>
-    <livewire:frontend.partials.footer />
+        <livewire:frontend.partials.footer />
+    </div>
+
+    <x-ui.navigation />
+
     @fluxScripts()
 
     @stack('scripts')
