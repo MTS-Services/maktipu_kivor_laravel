@@ -110,9 +110,8 @@ class Index extends Component
 
         $bulkActions = [
             ['value' => 'delete', 'label' => 'Delete'],
-            ['value' => 'activate', 'label' => 'Activate'],
-            ['value' => 'deactivate', 'label' => 'Deactivate'],
-            ['value' => 'suspend', 'label' => 'Suspend'],
+            ['value' => 'active', 'label' => 'Active'],
+            ['value' => 'inactive', 'label' => 'Inactive'],
         ];
 
         return view('livewire.backend.admin.components.settings.language.index', [
@@ -195,8 +194,8 @@ class Index extends Component
         try {
             match ($this->bulkAction) {
                 'delete' => $this->bulkDelete(),
-                'activate' => $this->bulkUpdateStatus(LanguageStatus::ACTIVE),
-                'deactivate' => $this->bulkUpdateStatus(LanguageStatus::INACTIVE),
+                'active' => $this->bulkUpdateStatus(LanguageStatus::ACTIVE),
+                'inactive' => $this->bulkUpdateStatus(LanguageStatus::INACTIVE),
                 default => null,
             };
 
@@ -211,13 +210,13 @@ class Index extends Component
     protected function bulkDelete(): void
     {
         $count = $this->languageService->bulkDeleteLanguages($this->selectedIds);
-        $this->success("{$count} Admins deleted successfully");
+        $this->success("{$count} Languages deleted successfully");
     }
 
     protected function bulkUpdateStatus(LanguageStatus $status): void
     {
         $count = $this->languageService->bulkUpdateStatus($this->selectedIds, $status);
-        $this->success("{$count} Admins updated successfully");
+        $this->success("{$count} Languages updated successfully");
     }
 
     protected function getFilters(): array
