@@ -71,11 +71,11 @@ class BaseModel extends Model
 
     public function getUpdatedAtFormattedAttribute(): string
     {
-        return Carbon::parse($this->updated_at)->format('d M, Y h:i A');
+        return $this->updated_at && $this->updated_at != $this->created_at ? Carbon::parse($this->updated_at)->format('d M, Y h:i A') : 'N/A';
     }
 
     public function getDeletedAtFormattedAttribute(): string
     {
-        return Carbon::parse($this->deleted_at)->format('d M, Y h:i A');
+        return $this->deleted_at && $this->deleted_at != $this->created_at ? Carbon::parse($this->deleted_at)->format('d M, Y h:i A') : 'N/A';
     }
 }

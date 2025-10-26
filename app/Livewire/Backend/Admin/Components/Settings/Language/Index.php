@@ -94,12 +94,12 @@ class Index extends Component
             [
                 'key' => 'id',
                 'label' => 'View',
-                'route' => 'admin.language.view',
+                'route' => 'admin.as.language.view',
             ],
             [
                 'key' => 'id',
                 'label' => 'Edit',
-                'route' => 'admin.language.edit'
+                'route' => 'admin.as.language.edit'
             ],
             [
                 'key' => 'id',

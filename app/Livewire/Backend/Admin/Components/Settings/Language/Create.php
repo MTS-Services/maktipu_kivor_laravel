@@ -5,10 +5,9 @@ namespace App\Livewire\Backend\Admin\Components\Settings\Language;
 use App\DTOs\Language\CreateLanguageDTO;
 use App\Enums\LanguageDirections;
 use App\Enums\LanguageStatus;
-use App\Livewire\Forms\Backend\Admin\Language\LanguageForm;
+use App\Livewire\Forms\Backend\Admin\Settings\LanguageForm;
 use App\Services\Admin\LanguageService;
 use App\Traits\Livewire\WithNotification;
-use Illuminate\Support\Facades\Lang;
 use Livewire\Component;
 use Livewire\Features\SupportFileUploads\WithFileUploads;
 
@@ -78,7 +77,7 @@ class Create extends Component
             $this->dispatch('languageCreated');
             $this->success('Language created successfully.');
 
-            return $this->redirect(route('admin.language.index'), navigate: true);
+            return $this->redirect(route('admin.as.language.index'), navigate: true);
 
         } catch (\Exception $e) {
             $this->error('Failed to create language: ' . $e->getMessage());
@@ -90,6 +89,6 @@ class Create extends Component
      */
     public function cancel(): void
     {
-        $this->redirect(route('admin.language.index'), navigate: true);
+        $this->redirect(route('admin.as.language.index'), navigate: true);
     }
 }

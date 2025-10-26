@@ -1,5 +1,6 @@
 <?php
 
+use App\Enums\CurrencyStatus;
 use App\Traits\AuditColumnsTrait;
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
@@ -15,14 +16,14 @@ return new class extends Migration
     {
         Schema::create('currencies', function (Blueprint $table) {
             $table->id();
-            $table->unsignedBigInteger('sort_order')->default(0);
+            $table->unsignedBigInteger('sort_order')->index()->default(0);
             $table->string('code')->unique()->comment('USD, EUR, GBP, BDT');
             $table->string('symbol')->nullable()->comment('&#xa3;, &#xa2;, &#x24;');
             $table->string('name')->unique()->comment('US Dollar, Euro');
-            $table->decimal('exchange_rate', 10, 6)->comment('against base currency');
+            $table->decimal('exchange_rate', 18, 6)->comment('against base currency');
             $table->integer('decimal_places')->default(2);
 
-            $table->enum('status', ['active', 'inactive'])->default('active');
+            $table->string('status')->index()->default(CurrencyStatus::ACTIVE->value);
             $table->boolean('is_default')->default(false);
 
             $table->softDeletes();

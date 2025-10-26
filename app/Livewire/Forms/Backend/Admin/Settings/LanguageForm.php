@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Livewire\Forms\Backend\Admin\Language;
+namespace App\Livewire\Forms\Backend\Admin\Settings;
 
 use App\Enums\LanguageDirections;
 use App\Enums\LanguageStatus;
@@ -30,7 +30,7 @@ class LanguageForm extends Form
     public string $status = '';
 
     #[Validate('boolean')]
-    public bool $is_default = false;
+    public int $is_default = 0;
 
      #[Validate('required|string')]
     public string $direction = '';

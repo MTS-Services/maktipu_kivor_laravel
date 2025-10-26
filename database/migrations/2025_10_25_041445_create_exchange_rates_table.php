@@ -19,7 +19,7 @@ return new class extends Migration
             $table->unsignedBigInteger('base_currency');
             $table->unsignedBigInteger('target_currency');
 
-            $table->decimal('rate', 10, 6);
+            $table->decimal('rate', 18,2);
             $table->timestamp('last_updated_at')->nullable();
 
             $table->foreign('base_currency')->references('id')->on('currencies')->cascadeOnDelete()->cascadeOnUpdate();

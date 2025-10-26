@@ -4,6 +4,7 @@ namespace App\Models;
 
 use App\Enums\CurrencyStatus;
 use App\Models\BaseModel;
+use Illuminate\Database\Eloquent\Builder;
 
 class Currency extends BaseModel
 {
@@ -41,17 +42,17 @@ class Currency extends BaseModel
                 End of RELATIONSHIPS
      =#=#=#=#=#=#=#=#=#=#==#=#=#=#= =#=#=#=#=#=#=#=#=#=#==#=#=#=#= */
 
-     public function scopeActive($query)
+     public function scopeActive(Builder $query): Builder
     {
         return $query->where('status', CurrencyStatus::ACTIVE);
     }
 
-    public function scopeInactive($query)
+    public function scopeInactive(Builder $query):Builder 
     {
         return $query->where('status', CurrencyStatus::INACTIVE);
     }
 
-    public function scopeSearch($query, $search)
+    public function scopeSearch(Builder $query, $search): Builder
     {
         return $query->where(function ($q) use ($search) {
             $q->where('name', 'like', "%{$search}%")
@@ -59,7 +60,7 @@ class Currency extends BaseModel
         });
     }
 
-    public function scopeFilter($query, array $filters)
+    public function scopeFilter(Builder $query, array $filters): Builder 
     {
         $query->when($filters['status'] ?? null, function ($query, $status) {
             $query->where('status', $status);
@@ -71,26 +72,14 @@ class Currency extends BaseModel
 
         return $query;
     }
-
-    // Accessors
-    public function getStatusLabelAttribute(): string
-    {
-        return $this->status->label();
-    }
-
-    public function getStatusColorAttribute(): string
-    {
-        return $this->status->color();
-    }
-
-    public function __construct(array $attributes = [])
-    {
-        parent::__construct($attributes);
-        $this->appends = array_merge(parent::getAppends(), [
-            'status_label',
-            'status_color',
-        ]);
-    }
+    // public function __construct(array $attributes = [])
+    // {
+    //     parent::__construct($attributes);
+    //     $this->appends = array_merge(parent::getAppends(), [
+    //         'status_label',
+    //         'status_color',
+    //     ]);
+    // }
 
 
 }

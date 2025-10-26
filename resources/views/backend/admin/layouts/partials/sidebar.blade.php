@@ -30,7 +30,7 @@
         <nav class="p-2 space-y-2">
             <x-backend.navlink type="single" icon="layout-dashboard" name="Dashboard" :route="route('admin.dashboard')"
                 active="admin-dashboard" :page_slug="$active" />
-            {{-- <x-backend.navlink type="single" icon="language" name="Language" :route="route('admin.language.index')"
+            {{-- <x-backend.navlink type="single" icon="language" name="Language" :route="route('admin.as.language.index')"
                 active="language" :page_slug="$active" /> --}}
             {{-- <x-backend.navlink type="single" icon="chart-pie" name="Analytics" active="analytics" :page_slug="$active" />
             <x-backend.navlink type="single" icon="inbox" name="Inbox" active="inbox" :page_slug="$active" /> --}}
@@ -102,9 +102,15 @@
                     ],
                     [
                         'name' => 'Languages',
-                        'route' => route('admin.language.index'),
+                        'route' => route('admin.as.language.index'),
                         'icon' => 'language',
                         'active' => 'language',
+                    ],
+                    [
+                        'name' => 'Currencies',
+                        'route' => route('admin.as.currency.index'),
+                        'icon' => 'currency-dollar',
+                        'active' => 'currency',
                     ],
                     [
                         'name' => 'Security',

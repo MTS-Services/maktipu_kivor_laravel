@@ -18,7 +18,8 @@ class DatabaseSeeder extends Seeder
             AdminSeeder::class,
             CountrySeeder::class,
             UserSeeder::class,
-            LanguageSeeder::class
+            LanguageSeeder::class,
+            CurrencySeeder::class,
         ]);
 
     }

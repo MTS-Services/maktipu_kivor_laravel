@@ -23,7 +23,7 @@ return new class extends Migration
             $table->string('country_code')->unique()->comment('us, es, fr, bd');
             $table->string('native_name')->nullable()->comment('English, Español');
             $table->string('flag_icon')->nullable();
-            $table->string('status')->default(LanguageStatus::ACTIVE->value);
+            $table->string('status')->index()->default(LanguageStatus::ACTIVE->value);
             $table->boolean('is_default')->default(false);
             $table->string('direction')->default(LanguageDirections::LTR->value);
 

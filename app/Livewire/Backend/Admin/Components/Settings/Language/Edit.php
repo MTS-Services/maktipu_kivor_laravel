@@ -5,7 +5,7 @@ namespace App\Livewire\Backend\Admin\Components\Settings\Language;
 use App\DTOs\Language\UpdateLanguageDTO;
 use App\Enums\LanguageDirections;
 use App\Enums\LanguageStatus;
-use App\Livewire\Forms\Backend\Admin\Language\LanguageForm;
+use App\Livewire\Forms\Backend\Admin\Settings\LanguageForm;
 use App\Models\Language;
 use App\Services\Admin\LanguageService;
 use App\Traits\Livewire\WithNotification;
@@ -79,7 +79,7 @@ class Edit extends Component
             $this->dispatch('languageUpdated');
             $this->success('Language updated successfully.');
 
-            return $this->redirect(route('admin.language.index'), navigate: true);
+            return $this->redirect(route('admin.as.language.index'), navigate: true);
 
         } catch (\Exception $e) {
             $this->error('Failed to update language: ' . $e->getMessage());
@@ -91,6 +91,6 @@ class Edit extends Component
      */
     public function cancel(): void
     {
-        $this->redirect(route('admin.language.index'), navigate: true);
+        $this->redirect(route('admin.as.language.index'), navigate: true);
     }
 }
