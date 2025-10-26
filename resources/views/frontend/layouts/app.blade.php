@@ -10,7 +10,6 @@
         {{ site_name() }}
     </title>
     @vite(['resources/css/app.css', 'resources/js/app.js'])
-    @fluxAppearance()
     <style>
         :root {
             --livewire-progress-bar-color: var(--color-zinc-500) !important;

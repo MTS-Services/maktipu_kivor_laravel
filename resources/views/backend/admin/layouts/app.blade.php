@@ -11,7 +11,6 @@
     </title>
     @vite(['resources/css/app.css', 'resources/js/app.js'])
     <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.9.1/chart.min.js"></script>
-    @fluxAppearance
     <style>
         @keyframes bounce-dot {
 
