@@ -17,7 +17,7 @@
                                     d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z"
                                     clip-rule="evenodd"></path>
                             </svg>
-                            <p class="font-semibold">Two-factor authentication has been enabled!</p>
+                            <p class="font-semibold">Two-factor authentication setup is in progress</p>
                         </div>
                     </div>
                 @endif
@@ -62,7 +62,7 @@
                 @endif
 
                 <!-- Current Status -->
-                <div class="mb-8">
+                {{-- <div class="mb-8">
                     @if ($twoFactorEnabled)
                         <div class="flex items-center p-4 bg-green-50 border border-green-200 rounded-lg">
                             <div class="flex-shrink-0">
@@ -92,7 +92,7 @@
                             </div>
                         </div>
                     @endif
-                </div>
+                </div> --}}
 
                 <!-- Enable/Disable 2FA -->
                 @if (!$twoFactorEnabled)
@@ -202,10 +202,11 @@
                     @endif
 
                     <!-- Disable 2FA -->
-                    <div class="border-t pt-6">
-                        <h3 class="text-lg font-semibold mb-4 text-red-600">Disable Two-Factor Authentication</h3>
+                  <div class="border-t pt-6">
+                        <h3 class="text-lg font-semibold mb-4 text-red-600">Cancel Processing</h3>
                         <p class="text-gray-600 mb-4">
-                            ⚠️ <strong>Warning:</strong> Disabling two-factor authentication will make your account significantly less secure.
+                            ⚠️ <strong>Warning:</strong> Cancel two-factor authentication processing will make your admin
+                            account significantly less secure.
                         </p>
 
                         <form method="POST" action="{{ route('user.two-factor.disable') }}">
@@ -213,8 +214,8 @@
                             @method('DELETE')
                             <button type="submit"
                                 class="px-6 py-2 bg-red-600 text-white font-semibold rounded-md hover:bg-red-700 transition duration-200"
-                                onclick="return confirm('Are you sure you want to disable two-factor authentication for your account?')">
-                                Disable Two-Factor Authentication
+                                onclick="return confirm('Are you sure you want to cancel Processing for your admin account?')">
+                                Cancel Processing
                             </button>
                         </form>
                     </div>
@@ -224,7 +225,7 @@
 
         <!-- Back to Dashboard -->
         <div class="mt-6 text-center">
-            <a href="{{ route('user.profile') }}" class="text-blue-600 hover:text-blue-800 font-medium">
+            <a href="{{ route('user.dashboard') }}" class="text-blue-600 hover:text-blue-800 font-medium">
                 ← Back to Dashboard
             </a>
         </div>
