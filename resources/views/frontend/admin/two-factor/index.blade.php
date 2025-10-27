@@ -10,7 +10,6 @@
                 <h2 class="text-2xl font-bold text-white">Admin Two-Factor Authentication</h2>
                 <p class="text-purple-100 mt-1">Secure your admin account with additional protection</p>
             </div>
-
             <div class="p-6">
                 <!-- Status Messages -->
                 @if (session('status') === 'two-factor-authentication-enabled')
@@ -21,10 +20,10 @@
                                     d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z"
                                     clip-rule="evenodd"></path>
                             </svg>
-                            <p class="font-semibold">Two-factor authentication has been enabled!</p>
+                            <p class="font-semibold">Two-factor authentication setup is in progress</p>
                         </div>
                     </div>
-                @endif
+                @endif 
 
                 @if (session('status') === 'two-factor-authentication-confirmed')
                     <div class="mb-6 p-4 bg-green-100 border-l-4 border-green-500 text-green-700 rounded">
@@ -65,40 +64,26 @@
                     </div>
                 @endif
 
-                <!-- Current Status -->
+                {{-- <!-- Current Status -->
                 <div class="mb-8">
                     @if ($twoFactorEnabled)
-                        <div class="flex items-center p-4 bg-green-50 border border-green-200 rounded-lg">
-                            <div class="flex-shrink-0">
-                                <svg class="w-8 h-8 text-green-600" fill="currentColor" viewBox="0 0 20 20">
-                                    <path fill-rule="evenodd"
-                                        d="M2.166 4.999A11.954 11.954 0 0010 1.944 11.954 11.954 0 0017.834 5c.11.65.166 1.32.166 2.001 0 5.225-3.34 9.67-8 11.317C5.34 16.67 2 12.225 2 7c0-.682.057-1.35.166-2.001zm11.541 3.708a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z"
-                                        clip-rule="evenodd"></path>
+                        <div class="flex items-center gap-3 p-4 bg-blue-100 border border-blue-300 rounded-lg">
+                            <div
+                                class="flex items-center justify-center w-10 h-10 bg-blue-500 text-white rounded-full animate-pulse">
+                                <svg class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="2"
+                                    viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7" />
                                 </svg>
                             </div>
-                            <div class="ml-4">
-                                <p class="text-lg font-semibold text-green-900">Admin 2FA is Active</p>
-                                <p class="text-sm text-green-700">Your admin account is protected with two-factor
-                                    authentication</p>
-                            </div>
-                        </div>
-                    @else
-                        <div class="flex items-center p-4 bg-red-50 border border-red-200 rounded-lg">
-                            <div class="flex-shrink-0">
-                                <svg class="w-8 h-8 text-red-600" fill="currentColor" viewBox="0 0 20 20">
-                                    <path fill-rule="evenodd"
-                                        d="M10 1.944A11.954 11.954 0 012.166 5C2.056 5.649 2 6.319 2 7c0 5.225 3.34 9.67 8 11.317C14.66 16.67 18 12.225 18 7c0-.682-.057-1.35-.166-2.001A11.954 11.954 0 0110 1.944zM11 14a1 1 0 11-2 0 1 1 0 012 0zm0-7a1 1 0 10-2 0v3a1 1 0 102 0V7z"
-                                        clip-rule="evenodd"></path>
-                                </svg>
-                            </div>
-                            <div class="ml-4">
-                                <p class="text-lg font-semibold text-red-900">Admin 2FA is Inactive</p>
-                                <p class="text-sm text-red-700">⚠️ Enable two-factor authentication immediately to
-                                    secure your admin account</p>
+                            <div>
+                                <p class="text-lg font-semibold text-blue-800">Two-Factor Authentication Processing</p>
+                                <p class="text-sm text-blue-700">Please wait while your two-factor verification setup is
+                                    being confirmed.</p>
                             </div>
                         </div>
                     @endif
-                </div>
+                </div> --}}
+
 
                 <!-- Enable/Disable 2FA -->
                 @if (!$twoFactorEnabled)
@@ -207,11 +192,11 @@
                         </div>
                     @endif
 
-                    <!-- Disable 2FA -->
+                    <!-- Cancel 2FA -->
                     <div class="border-t pt-6">
-                        <h3 class="text-lg font-semibold mb-4 text-red-600">Disable Two-Factor Authentication</h3>
+                        <h3 class="text-lg font-semibold mb-4 text-red-600">Cancel Processing</h3>
                         <p class="text-gray-600 mb-4">
-                            ⚠️ <strong>Warning:</strong> Disabling two-factor authentication will make your admin
+                            ⚠️ <strong>Warning:</strong> Cancel two-factor authentication processing will make your admin
                             account significantly less secure.
                         </p>
 
@@ -220,8 +205,8 @@
                             @method('DELETE')
                             <button type="submit"
                                 class="px-6 py-2 bg-red-600 text-white font-semibold rounded-md hover:bg-red-700 transition duration-200"
-                                onclick="return confirm('Are you sure you want to disable two-factor authentication for your admin account?')">
-                                Disable Two-Factor Authentication
+                                onclick="return confirm('Are you sure you want to cancel Processing for your admin account?')">
+                                Cancel Processing
                             </button>
                         </form>
                     </div>
