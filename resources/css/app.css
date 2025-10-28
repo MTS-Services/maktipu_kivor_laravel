@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Archivo:ital,wght@0,100..900;1,100..900&family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Playfair+Display:ital,wght@0,400..900;1,400..900&display=swap');
+
 @import 'tailwindcss';
 @import '../../vendor/livewire/flux/dist/flux.css';
 @plugin 'daisyui';
@@ -13,57 +15,56 @@
 @source '../../vendor/livewire/flux-pro/stubs/**/*.blade.php';
 @source '../../vendor/livewire/flux/stubs/**/*.blade.php';
 
-@custom-variant dark (&:where(.dark, .dark *));
-
 :root {
     /* Base Colors */
     --color-black: #000000;
     --color-white: #ffffff;
 
     /* Primary: Orange */
-    --color-primary-50: #fff7ec;
-    --color-primary-100: #ffeeda;
-    --color-primary-200: #ffdcb5;
-    --color-primary-300: #ffc98a;
-    --color-primary-400: #ffb561;
-    --color-primary-500: #ff9e33;
-    /* main accent */
-    --color-primary-600: #e9851e;
-    --color-primary-700: #cc6a10;
-    --color-primary-800: #a8540b;
-    --color-primary-900: #703808;
-    --color-primary-950: #3b1e04;
+    --color-primary-50: #FFF0E5;
+    --color-primary-100: #FFE0CC;
+    --color-primary-200: #FFC299;
+    --color-primary-300: #FFA366;
+    --color-primary-400: #FF8533;
+    --color-primary-500: #FF6600;
+    --color-primary-600: #CC5200;
+    --color-primary-700: #993D00;
+    --color-primary-800: #662900;
+    --color-primary-900: #331400;
+    --color-primary-950: #190A00;
 
     /* Accent Colors */
     --color-accent-light: var(--color-primary-500);
-    --color-accent-content-light: var(--color-primary-700);
-    --color-accent-foreground-light: #fffaf5;
+    --color-accent-content-light: oklch(93.639% 0.04459 67.186);
+    --color-accent-foreground-light: oklch(94.23% 0.00959 72.463);
 
     --color-accent-dark: var(--color-primary-400);
     --color-accent-content-dark: var(--color-primary-800);
-    --color-accent-foreground-dark: #1a1a1a;
+    --color-accent-foreground-dark: oklch(9.693% 0.00001 271.152);
 
     /* Text Colors */
-    --color-text-primary-light: #2c2418;
-    --color-text-secondary-light: #5e4f3d;
-    --color-text-muted-light: #8b7a67;
+    --color-text-primary-light: oklch(32.109% 0.00004 271.152);
+    --color-text-secondary-light: oklch(55.553% 0.00006 271.152);
+    --color-text-muted-light: oklch(71.547% 0.00008 271.152);
 
-    --color-text-primary-dark: #f2ede8;
-    --color-text-secondary-dark: #c8bfb4;
-    --color-text-muted-dark: #9b9186;
+    --color-text-primary-dark: oklch(84.522% 0.0001 271.152);
+    --color-text-secondary-dark: oklch(72.516% 0.00008 271.152);
+    --color-text-muted-dark: oklch(56.241% 0.00006 271.152);
+
+    /* Icon Colors */
+    --color-icon-primary-light: #FF7F00;
+    --color-icon-secondary-light: #5C4C3D;
+
 
     /* Backgrounds */
-    --color-bg-primary-light: oklch(98.5% 0 80);
-    /* very light orange tint */
-    --color-bg-secondary-light: oklch(96.7% 0.01 75);
-    --color-bg-tertiary-light: oklch(92% 0.02 70);
+    --color-bg-primary-light: oklch(94.23% 0.00959 72.463);
+    --color-bg-secondary-light: oklch(98.657% 0.00501 67.263);
+    --color-bg-tertiary-light: oklch(99.281% 0.00407 55.477);
 
-    --color-bg-primary-dark: oklch(22% 0.02 65);
-    --color-bg-secondary-dark: oklch(28% 0.03 60);
-    --color-bg-tertiary-dark: oklch(36% 0.04 55);
+    --color-bg-primary-dark: oklch(9.693% 0.00001 271.152);
+    --color-bg-secondary-dark: oklch(12.46% 0.01322 118.004);
+    --color-bg-tertiary-dark: oklch(24.559% 0.04658 114.835);
 }
-
-
 
 @theme {
     /* ======================================================
@@ -81,22 +82,7 @@
     --color-zinc-900: var(--color-primary-900);
     --color-zinc-950: var(--color-primary-950);
 
-    /* --- Secondary: Pink Colors Added Here --- */
-    --color-pink-50: var(--color-secondary-50);
-    --color-pink-100: var(--color-secondary-100);
-    --color-pink-200: var(--color-secondary-200);
-    --color-pink-300: var(--color-secondary-300);
-    --color-pink-400: var(--color-secondary-400);
-    --color-pink-500: var(--color-secondary-500);
-    --color-pink-600: var(--color-secondary-600);
-    --color-pink-700: var(--color-secondary-700);
-    --color-pink-800: var(--color-secondary-800);
-    --color-pink-900: var(--color-secondary-900);
-    --color-pink-950: var(--color-secondary-950);
-    /* ------------------------------------------ */
-
     --color-accent: var(--color-accent-light);
-    --color-pink: var(--color-secondary-500);
     --color-accent-content: var(--color-accent-content-light);
     --color-accent-foreground: var(--color-accent-foreground-light);
 
@@ -104,9 +90,12 @@
     --color-text-secondary: var(--color-text-secondary-light);
     --color-text-muted: var(--color-text-muted-light);
 
-    --color-bg-primary: var(--color-primary-900);
-    --color-bg-secondary: var(--color-primary-950);
-    --color-bg-tertiary: var(--color-secondary-500);
+    --color-text-black: var(--color-black);
+    --color-text-white: var(--color-white);
+
+    --color-bg-primary: var(--color-bg-primary-light);
+    --color-bg-secondary: var(--color-bg-secondary-light);
+    --color-bg-tertiary: var(--color-bg-tertiary-light);
 
     --color-bg-black: var(--color-black);
     --color-bg-white: var(--color-white);
@@ -117,6 +106,14 @@
 
     --shadow-glass-card: rgba(0, 0, 0, 0.1) 0px 1px 3px 0px,
         rgba(0, 0, 0, 0.06) 0px 1px 2px 0px;
+
+    /* ======================================================
+    	 	 	 	 	 	 # Font Families
+    ======================================================== */
+
+    --font-inter: "Inter", sans-serif;
+    --font-archivo: "Archivo", sans-serif;
+    --font-playfair-display: "Playfair Display", serif;
 
     /* ======================================================
     	 	 	 	 	 	 # Animations
@@ -136,6 +133,12 @@
             background-position: 0% 50%;
         }
     }
+
+    /* ======================================================
+    	 	 	 	 	 	 # Containers
+    ======================================================== */
+
+    --container-8xl: 85rem;
 
     /* ======================================================
     	 	 	 	 	 	 # Breakpoints
@@ -173,10 +176,8 @@
         scroll-behavior: smooth;
         scrollbar-width: thin;
         scrollbar-color: var(--color-accent) var(--color-accent-content) !important;
-        @apply transition-colors duration-200 ease-in-out text-text-primary;
+        @apply transition-colors duration-200 ease-in-out text-text-primary font-inter;
     }
-
-
 
     /* For Webkit-based browsers (Chrome, Edge, Safari) */
     *::-webkit-scrollbar {
@@ -185,13 +186,11 @@
         background-color: var(--color-accent-content) !important;
     }
 
-
     *::-webkit-scrollbar-thumb {
         background-color: var(--color-accent) !important;
         border-radius: 9999px !important;
         box-shadow: 0px 0px 0px rgba(0, 0, 0, 0.75);
     }
-
 
     *::-webkit-scrollbar-thumb:hover {
         background-color: var(--color-accent) !important;
@@ -222,40 +221,74 @@
     }
 
     .glass-card {
-        @apply backdrop-blur-md bg-gradient-to-tr from-zinc-50/10 via-accent/5 to-zinc-50/10 shadow-glass-card;
+        @apply backdrop-blur-md bg-linear-to-tr from-zinc-50/10 via-accent/5 to-zinc-50/10 shadow-glass-card;
     }
 
 
     .sidebar-glass-card {
-        @apply bg-gradient-to-tr from-zinc-800/10 via-accent/10 to-zinc-800/10 shadow-glass-card;
+        @apply bg-linear-to-tr from-zinc-800/10 via-accent/10 to-zinc-800/10 shadow-glass-card;
     }
 
     .animated-bg {
-        @apply bg-[length:400%_400%] animate-gradientBG bg-gradient-to-br from-bg-tertiary via-bg-primary to-bg-tertiary;
+        @apply bg-size-[400%_400%] animate-gradientBG bg-linear-to-br from-bg-tertiary via-bg-primary to-bg-secondary;
+    }
+}
+
+@layer components {
+    p {
+        @apply text-sm sm:text-base text-text-primary font-inter;
+    }
+
+    h1 {
+        @apply text-3xl sm:text-4xl md:text-5xl lg:text-6xl text-text-primary font-semibold font-playfair-display;
+    }
+
+    h2 {
+        @apply text-2xl sm:text-3xl md:text-4xl lg:text-5xl text-text-primary font-archivo font-medium;
+    }
+
+    h3 {
+        @apply text-xl sm:text-2xl md:text-3xl lg:text-4xl text-text-secondary font-archivo font-medium;
+    }
+
+    h4 {
+        @apply text-lg sm:text-xl md:text-2xl lg:text-3xl text-text-secondary font-archivo font-medium;
+    }
+
+    h5 {
+        @apply text-base sm:text-lg md:text-xl lg:text-2xl text-text-secondary font-archivo font-medium;
+    }
+
+    h6 {
+        @apply text-sm sm:text-base text-text-secondary font-inter;
+    }
+
+    a {
+        @apply text-sm sm:text-base text-text-primary font-archivo;
     }
 
 }
 
-.container {
-    @apply mx-auto;
-    max-width: 1280px;
-}
+@utility container {
+    margin-inline: auto;
+    max-width: 100%;
+    padding-inline: 1rem;
 
-button {
-    @apply cursor-pointer transition duration-150;
-}
+    @media (width >=theme(--breakpoint-2xl)) {
+        max-width: 1392px;
+    }
 
-button:hover {
-    @apply scale-[1.01];
+    /* @variant 2xl {
+        padding-inline: 0rem;
+    } */
 }
-
 
 [data-flux-field]:not(ui-radio, ui-checkbox) {
     @apply grid gap-2;
 }
 
 [data-flux-label] {
-    @apply  !mb-0 !leading-tight;
+    @apply !mb-0 !leading-tight;
 }
 
 input:focus[data-flux-control],
